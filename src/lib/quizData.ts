@@ -4,203 +4,211 @@ export interface Question {
 	options: string[];
 	answer: string;
 	explanation: string;
+	difficulty?: 'intermediate' | 'advanced' | 'expert';
+	structureIllustration?: string; // SVG string for molecular structures
+	reactionScheme?: string; // SVG string for reaction mechanisms
 }
 
 export const quizData: Question[] = [
 	{
 		id: 1,
-		question: "Which of the following describes a compound composed only of carbon and hydrogen?",
-		options: ["Carbohydrate", "Hydrocarbon", "Hydrate", "Carbonate"],
-		answer: "Hydrocarbon",
-		explanation: "Hydrocarbons are organic compounds consisting entirely of hydrogen and carbon atoms."
+		question: "In the free radical chlorination of methane, what is the enthalpy change (ΔH°) for the chain initiation step (Cl₂ → 2Cl•)?",
+		options: ["−243.4 kJ/mol", "+243.4 kJ/mol", "−16 kJ/mol", "+16 kJ/mol"],
+		answer: "+243.4 kJ/mol",
+		explanation: "Chain initiation requires energy input to break the Cl-Cl bond homolytically. The bond dissociation energy is +243.4 kJ/mol, making this an endothermic step.",
+		difficulty: "advanced",
+		structureIllustration: `<svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+			<rect width="400" height="120" fill="#1a1a1a" rx="8"/>
+			<text x="200" y="25" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="12" font-weight="bold">CHAIN INITIATION STEP</text>
+			<text x="80" y="60" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="18">Cl−Cl</text>
+			<text x="200" y="60" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="20">→</text>
+			<text x="200" y="45" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="11">hv or Δ</text>
+			<text x="320" y="60" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="18">2 Cl•</text>
+			<text x="200" y="95" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="13">ΔH° = +243.4 kJ/mol</text>
+		</svg>`
 	},
 	{
 		id: 2,
-		question: "Hydrocarbons with only single bonds are classified as:",
-		options: ["Unsaturated", "Aromatic", "Saturated", "Alkynes"],
-		answer: "Saturated",
-		explanation: "Saturated hydrocarbons have only single bonds between carbon atoms, meaning they are 'saturated' with hydrogen."
+		question: "During the propagation step of methane chlorination, which step is exothermic with ΔH° = −87 kJ/mol?",
+		options: ["CH₄ + Cl• → •CH₃ + HCl", "•CH₃ + Cl₂ → CH₃Cl + Cl•", "2Cl• → Cl₂", "Cl₂ → 2Cl•"],
+		answer: "•CH₃ + Cl₂ → CH₃Cl + Cl•",
+		explanation: "The second propagation step where the methyl radical abstracts a chlorine atom from Cl₂ is highly exothermic (−87 kJ/mol), driving the chain reaction forward.",
+		difficulty: "advanced",
+		reactionScheme: `<svg viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg">
+			<rect width="500" height="150" fill="#1a1a1a" rx="8"/>
+			<text x="250" y="25" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="12" font-weight="bold">PROPAGATION STEP 2</text>
+			<text x="100" y="65" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="16">•CH₃ + Cl−Cl</text>
+			<text x="250" y="65" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="20">→</text>
+			<text x="400" y="65" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="16">CH₃−Cl + Cl•</text>
+			<text x="250" y="100" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="14">ΔH° = −87 kJ/mol (Exothermic)</text>
+			<text x="250" y="130" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">Chain continues: Cl• regenerated</text>
+		</svg>`
 	},
 	{
 		id: 3,
-		question: "Which type of hydrocarbon contains at least one double or triple bond?",
-		options: ["Alkanes", "Saturated", "Unsaturated", "Paraffins"],
-		answer: "Unsaturated",
-		explanation: "Unsaturated hydrocarbons have double or triple bonds, which reduces the number of hydrogen atoms they can hold."
+		question: "Which termination pathway in methane chlorination has the most exothermic enthalpy change?",
+		options: ["2Cl• → Cl₂ (−243.4 kJ/mol)", "•CH₃ + Cl• → CH₃Cl (−330 kJ/mol)", "2•CH₃ → C₂H₆ (−350 kJ/mol)", "All are equally exothermic"],
+		answer: "2•CH₃ → C₂H₆ (−350 kJ/mol)",
+		explanation: "The coupling of two methyl radicals to form ethane releases the most energy (−350 kJ/mol), though this pathway is less frequent due to lower radical concentration.",
+		difficulty: "expert",
+		structureIllustration: `<svg viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg">
+			<rect width="500" height="180" fill="#1a1a1a" rx="8"/>
+			<text x="250" y="25" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="12" font-weight="bold">TERMINATION PATHWAYS</text>
+			<text x="250" y="55" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="13">2 Cl• → Cl₂</text>
+			<text x="420" y="55" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="12">ΔH° = −243.4 kJ/mol</text>
+			<text x="250" y="85" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="13">•CH₃ + Cl• → CH₃Cl</text>
+			<text x="420" y="85" text-anchor="middle" fill="#ff9900" font-family="JetBrains Mono" font-size="12">ΔH° = −330 kJ/mol</text>
+			<text x="250" y="115" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="13" font-weight="bold">2 •CH₃ → CH₃−CH₃ (ethane)</text>
+			<text x="420" y="115" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="12" font-weight="bold">ΔH° = −350 kJ/mol ✓</text>
+			<text x="250" y="155" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">Note: Termination is infrequent due to low radical concentration</text>
+		</svg>`
 	},
 	{
 		id: 4,
-		question: "Alkanes, Alkenes, and Alkynes are sub-classifications of which group?",
-		options: ["Aromatic", "Aliphatic", "Cyclic", "Benzenoid"],
-		answer: "Aliphatic",
-		explanation: "Aliphatic hydrocarbons are open-chain or cyclic compounds that do not contain a benzene ring."
+		question: "What is the tetrahedral bond angle in methane (CH₄) and what hybridization accounts for this geometry?",
+		options: ["120°, sp²", "109.5°, sp³", "180°, sp", "90°, dsp²"],
+		answer: "109.5°, sp³",
+		explanation: "Methane has sp³ hybridized carbon with four equivalent C-H bonds arranged tetrahedrally at 109.5° bond angles, minimizing electron pair repulsion.",
+		difficulty: "intermediate",
+		structureIllustration: `<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+			<rect width="400" height="280" fill="#1a1a1a" rx="8"/>
+			<text x="200" y="25" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="12" font-weight="bold">METHANE: TETRAHEDRAL GEOMETRY</text>
+			<line x1="200" y1="140" x2="200" y2="70" stroke="#e0e0e0" stroke-width="2"/>
+			<line x1="200" y1="140" x2="140" y2="200" stroke="#e0e0e0" stroke-width="2"/>
+			<line x1="200" y1="140" x2="260" y2="200" stroke="#e0e0e0" stroke-width="2"/>
+			<line x1="200" y1="140" x2="200" y2="220" stroke="#888" stroke-width="2" stroke-dasharray="4,4"/>
+			<circle cx="200" cy="140" r="18" fill="#00f2ff"/>
+			<text x="200" y="145" text-anchor="middle" fill="#0a0a0a" font-family="JetBrains Mono" font-size="12" font-weight="bold">C</text>
+			<circle cx="200" cy="65" r="12" fill="#bfff00"/>
+			<text x="200" y="55" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="11">H</text>
+			<circle cx="135" cy="205" r="12" fill="#bfff00"/>
+			<text x="120" y="225" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="11">H</text>
+			<circle cx="265" cy="205" r="12" fill="#bfff00"/>
+			<text x="280" y="225" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="11">H</text>
+			<circle cx="200" cy="225" r="12" fill="#bfff00" opacity="0.5"/>
+			<text x="200" y="250" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="11">H</text>
+			<text x="230" y="120" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="12">109.5°</text>
+			<path d="M 200 140 L 230 110" stroke="#ff3e00" stroke-width="1" fill="none"/>
+			<text x="200" y="270" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">sp³ hybridization, 4 σ bonds</text>
+		</svg>`
 	},
 	{
 		id: 5,
-		question: "What is the hybridization of carbon atoms in Alkanes?",
-		options: ["sp", "sp²", "sp³", "dsp²"],
-		answer: "sp³",
-		explanation: "In alkanes, each carbon atom is bonded to four other atoms, resulting in sp³ hybridization."
+		question: "In the industrial manufacture of methanol from methane, what conditions are used (850°C, Ni catalyst)?",
+		options: ["Complete combustion to CO₂", "Partial oxidation to CO + H₂, then methanol", "Direct hydration", "Halogenation followed by hydrolysis"],
+		answer: "Partial oxidation to CO + H₂, then methanol",
+		explanation: "At 850°C with Ni catalyst, methane undergoes partial oxidation to form synthesis gas (CO + H₂), which is then converted to methanol and other alcohols.",
+		difficulty: "advanced",
+		reactionScheme: `<svg viewBox="0 0 550 160" xmlns="http://www.w3.org/2000/svg">
+			<rect width="550" height="160" fill="#1a1a1a" rx="8"/>
+			<text x="275" y="25" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="12" font-weight="bold">METHANOL PRODUCTION FROM METHANE</text>
+			<text x="120" y="65" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="15">CH₄ + O₂</text>
+			<text x="275" y="55" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="18">→</text>
+			<text x="275" y="45" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="10">850°C, Ni</text>
+			<text x="400" y="65" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="15">CO + H₂</text>
+			<text x="400" y="85" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">(synthesis gas)</text>
+			<text x="275" y="110" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="18">↓</text>
+			<text x="275" y="140" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="14">CH₃OH + other alcohols</text>
+		</svg>`
 	},
 	{
 		id: 6,
-		question: "What is the characteristic bond angle in Alkanes?",
-		options: ["90°", "120°", "180°", "109.5°"],
-		answer: "109.5°",
-		explanation: "The tetrahedral arrangement of sp³ hybridized carbons leads to bond angles of 109.5°."
+		question: "What are ALL the products formed when methane reacts with excess chlorine under UV light?",
+		options: ["CH₃Cl only", "CH₃Cl and HCl", "CH₃Cl, CH₂Cl₂, CHCl₃, CCl₄, and C₂H₆", "CHCl₃ and CCl₄ only"],
+		answer: "CH₃Cl, CH₂Cl₂, CHCl₃, CCl₄, and C₂H₆",
+		explanation: "With excess Cl₂, multiple substitution occurs producing chloromethane, dichloromethane, chloroform, and carbon tetrachloride. Ethane (C₂H₆) forms from methyl radical coupling during termination.",
+		difficulty: "advanced",
+		structureIllustration: `<svg viewBox="0 0 550 220" xmlns="http://www.w3.org/2000/svg">
+			<rect width="550" height="220" fill="#1a1a1a" rx="8"/>
+			<text x="275" y="25" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="12" font-weight="bold">CHLORINATION PRODUCTS OF METHANE</text>
+			<text x="100" y="55" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="12">CH₃Cl</text>
+			<text x="100" y="72" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">Methyl chloride</text>
+			<text x="100" y="87" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="10">BP: −24.2°C (gas)</text>
+			<text x="220" y="55" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="12">CH₂Cl₂</text>
+			<text x="220" y="72" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">Methylene chloride</text>
+			<text x="220" y="87" text-anchor="middle" fill="#ff9900" font-family="JetBrains Mono" font-size="10">BP: 40°C (liquid)</text>
+			<text x="350" y="55" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="12">CHCl₃</text>
+			<text x="350" y="72" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">Chloroform</text>
+			<text x="350" y="87" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="10">BP: 61.7°C (liquid)</text>
+			<text x="470" y="55" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="12">CCl₄</text>
+			<text x="470" y="72" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">Carbon tetrachloride</text>
+			<text x="470" y="87" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="10">BP: 76.5°C (liquid)</text>
+			<text x="275" y="130" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="13" font-weight="bold">+ C₂H₆ (ethane from termination)</text>
+			<text x="275" y="160" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">CH₄ + Cl₂ → CH₃Cl + CH₂Cl₂ + CHCl₃ + CCl₄ + C₂H₆ + HCl</text>
+			<text x="275" y="190" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="11">All chlorinated derivatives are excellent nonpolar solvents</text>
+		</svg>`
 	},
 	{
 		id: 7,
-		question: "Which is the simplest alkane?",
-		options: ["Ethane", "Methane", "Propane", "Butane"],
-		answer: "Methane",
-		explanation: "Methane (CH₄) is the smallest and simplest member of the alkane family."
+		question: "Why does the chlorination of methane NOT occur in the dark or at low temperatures?",
+		options: ["Methane is unreactive", "Energy is required to generate free radicals via homolytic cleavage of Cl₂", "The reaction is exothermic", "Chlorine is a gas at room temperature"],
+		answer: "Energy is required to generate free radicals via homolytic cleavage of Cl₂",
+		explanation: "The initiation step requires UV light or temperatures >250°C to provide enough energy (243.4 kJ/mol) to break the Cl-Cl bond homolytically and generate chlorine radicals.",
+		difficulty: "intermediate",
+		reactionScheme: `<svg viewBox="0 0 500 140" xmlns="http://www.w3.org/2000/svg">
+			<rect width="500" height="140" fill="#1a1a1a" rx="8"/>
+			<text x="250" y="25" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="12" font-weight="bold">ENERGY REQUIREMENT FOR INITIATION</text>
+			<text x="150" y="65" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="16">Cl−Cl</text>
+			<text x="250" y="65" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="20">→</text>
+			<text x="250" y="50" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="11">hv (UV) or Δ >250°C</text>
+			<text x="370" y="65" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="16">Cl• + Cl•</text>
+			<text x="250" y="100" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="12">Bond dissociation energy: 243.4 kJ/mol</text>
+			<text x="250" y="125" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="11">No reaction in dark or low temp — no radicals formed!</text>
+		</svg>`
 	},
 	{
 		id: 8,
-		question: "What is the molecular geometry of Methane?",
-		options: ["Linear", "Trigonal Planar", "Tetrahedral", "Octahedral"],
-		answer: "Tetrahedral",
-		explanation: "Methane has a central carbon bonded to four hydrogen atoms at the corners of a tetrahedron."
+		question: "What is the reactivity order of halogens (X₂) with methane in free radical halogenation?",
+		options: ["I₂ > Br₂ > Cl₂ > F₂", "F₂ > Cl₂ > Br₂ > I₂", "Cl₂ > Br₂ > F₂ > I₂", "Br₂ > Cl₂ > I₂ > F₂"],
+		answer: "F₂ > Cl₂ > Br₂ > I₂",
+		explanation: "Fluorine is most reactive (often explosive), followed by chlorine, bromine, and iodine (least reactive). This order reflects bond dissociation energies and reaction exothermicity.",
+		difficulty: "intermediate",
+		structureIllustration: `<svg viewBox="0 0 500 160" xmlns="http://www.w3.org/2000/svg">
+			<rect width="500" height="160" fill="#1a1a1a" rx="8"/>
+			<text x="250" y="25" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="12" font-weight="bold">HALOGEN REACTIVITY ORDER</text>
+			<text x="250" y="60" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="14">CH₄ + X₂ → CH₃X + HX</text>
+			<text x="250" y="95" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="18" font-weight="bold">F₂ > Cl₂ > Br₂ > I₂</text>
+			<text x="100" y="125" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="11">F₂: Explosive</text>
+			<text x="220" y="125" text-anchor="middle" fill="#ff9900" font-family="JetBrains Mono" font-size="11">Cl₂: Fast (UV)</text>
+			<text x="340" y="125" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="11">Br₂: Slow (heat)</text>
+			<text x="450" y="125" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">I₂: Negligible</text>
+		</svg>`
 	},
 	{
 		id: 9,
-		question: "What is the boiling point of Methane?",
-		options: ["0 °C", "−161.5 °C", "−183 °C", "100 °C"],
-		answer: "−161.5 °C",
-		explanation: "Methane has a very low boiling point of −161.5 °C, making it a gas at room temperature."
+		question: "What laboratory method produces methane from sodium acetate?",
+		options: ["Electrolysis", "Decarboxylation with soda lime (NaOH + CaO)", "Hydrolysis with HCl", "Oxidation with KMnO₄"],
+		answer: "Decarboxylation with soda lime (NaOH + CaO)",
+		explanation: "Heating sodium acetate with soda lime (NaOH + CaO) causes decarboxylation, removing CO₂ and producing methane: CH₃COONa + NaOH → CH₄ + Na₂CO₃.",
+		difficulty: "intermediate",
+		reactionScheme: `<svg viewBox="0 0 550 130" xmlns="http://www.w3.org/2000/svg">
+			<rect width="550" height="130" fill="#1a1a1a" rx="8"/>
+			<text x="275" y="25" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="12" font-weight="bold">LABORATORY PREPARATION OF METHANE</text>
+			<text x="150" y="60" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="14">CH₃COONa + NaOH</text>
+			<text x="275" y="60" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="18">→</text>
+			<text x="275" y="48" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="10">CaO, Δ</text>
+			<text x="420" y="60" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="14">CH₄ + Na₂CO₃</text>
+			<text x="275" y="95" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">Decarboxylation: removal of CO₂ from carboxylic acid salt</text>
+			<text x="275" y="115" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="11">Soda lime = NaOH + CaO (CaO absorbs moisture)</text>
+		</svg>`
 	},
 	{
 		id: 10,
-		question: "Which intermolecular force is primarily responsible for the properties of methane?",
-		options: ["Hydrogen bonding", "Ionic bonding", "Van der Waals forces", "Covalent bonding"],
-		answer: "Van der Waals forces",
-		explanation: "Methane is nonpolar, so it relies on weak Van der Waals (London dispersion) forces."
-	},
-	{
-		id: 11,
-		question: "Methane is insoluble in water. In which of the following is it soluble?",
-		options: ["Alcohol", "Acetic acid", "Benzene", "Ammonia"],
-		answer: "Benzene",
-		explanation: "Methane is nonpolar and follows the 'like dissolves like' rule, being soluble in nonpolar solvents like benzene and gasoline."
-	},
-	{
-		id: 12,
-		question: "Which of the following is NOT a common name for methane?",
-		options: ["Firedamp", "Marsh gas", "Biogas", "Synthesis gas"],
-		answer: "Synthesis gas",
-		explanation: "Common names for methane include Firedamp, Marsh gas, and Biogas. Synthesis gas (syngas) is a mixture of CO and H₂."
-	},
-	{
-		id: 13,
-		question: "How can methane be prepared in the laboratory?",
-		options: ["Burning coal", "Heating sodium acetate with sodium hydroxide", "Reacting methane with chlorine", "Distillation of air"],
-		answer: "Heating sodium acetate with sodium hydroxide",
-		explanation: "The decarboxylation of sodium acetate using soda lime (NaOH + CaO) is a standard lab method."
-	},
-	{
-		id: 14,
-		question: "The reaction of aluminum carbide (Al₄C₃) with water produces:",
-		options: ["Ethane", "Acetylene", "Methane", "Carbon dioxide"],
-		answer: "Methane",
-		explanation: "Aluminum carbide reacts with water to release methane gas: Al₄C₃ + 12H₂O → 4Al(OH)₃ + 3CH₄."
-	},
-	{
-		id: 15,
-		question: "What are the products of the complete combustion of methane?",
-		options: ["CO and H₂O", "CO₂ and H₂O", "C and H₂", "CH₃OH and H₂O"],
-		answer: "CO₂ and H₂O",
-		explanation: "Complete combustion in excess oxygen yields carbon dioxide, water, and heat."
-	},
-	{
-		id: 16,
-		question: "How much heat is released in the complete combustion of one mole of methane?",
-		options: ["100 kcal", "213 kcal", "500 kcal", "850 kcal"],
-		answer: "213 kcal",
-		explanation: "The reaction is highly exothermic, releasing 213 kcal of energy."
-	},
-	{
-		id: 17,
-		question: "Incomplete combustion of methane produces which of the following?",
-		options: ["Carbon dioxide", "Methanol", "Soot (Carbon monoxide)", "Formaldehyde"],
-		answer: "Soot (Carbon monoxide)",
-		explanation: "When oxygen is limited, methane burns to produce carbon monoxide and carbon (soot)."
-	},
-	{
-		id: 18,
-		question: "What catalyst is used in the manufacture of methanol from methane at 850°C?",
-		options: ["Platinum", "Iron", "Nickel", "Copper"],
-		answer: "Nickel",
-		explanation: "Nickel is used as a catalyst in the steam reforming/partial oxidation process to create synthesis gas and alcohols."
-	},
-	{
-		id: 19,
-		question: "What is the correct reactivity order of halogens with methane?",
-		options: ["I₂ > Br₂ > Cl₂ > F₂", "F₂ > Cl₂ > Br₂ > I₂", "Cl₂ > F₂ > Br₂ > I₂", "Br₂ > Cl₂ > F₂ > I₂"],
-		answer: "F₂ > Cl₂ > Br₂ > I₂",
-		explanation: "Fluorine is the most reactive (often explosive), while Iodine is the least reactive."
-	},
-	{
-		id: 20,
-		question: "Which condition is required for the halogenation of methane to occur?",
-		options: ["Darkness", "Low temperature", "UV light or >250°C", "High pressure only"],
-		answer: "UV light or >250°C",
-		explanation: "Energy is needed to initiate the reaction by breaking the halogen-halogen bond."
-	},
-	{
-		id: 21,
-		question: "The first step of the methane chlorination mechanism is:",
-		options: ["Chain Propagation", "Chain Termination", "Chain Initiation", "Hydrogen Abstraction"],
-		answer: "Chain Initiation",
-		explanation: "Initiation involves the homolytic cleavage of the Cl-Cl bond by UV light to form free radicals."
-	},
-	{
-		id: 22,
-		question: "What is a 'free radical' in the context of halogenation?",
-		options: ["A stable molecule", "A charged ion", "An atom/molecule with an unpaired electron", "A catalyst"],
-		answer: "An atom/molecule with an unpaired electron",
-		explanation: "Free radicals are highly reactive species produced by the initiation step."
-	},
-	{
-		id: 23,
-		question: "Which of the following is a termination step in chlorination?",
-		options: ["Cl₂ → 2•Cl", "CH₄ + •Cl → •CH₃ + HCl", "2•Cl → Cl₂", "•CH₃ + Cl₂ → CH₃Cl + •Cl"],
-		answer: "2•Cl → Cl₂",
-		explanation: "Termination occurs when two radicals combine to form a stable molecule, ending the chain."
-	},
-	{
-		id: 24,
-		question: "What is the common name for CHCl₃?",
-		options: ["Methyl chloride", "Methylene chloride", "Chloroform", "Carbon tetrachloride"],
-		answer: "Chloroform",
-		explanation: "Trichloromethane is widely known as chloroform."
-	},
-	{
-		id: 25,
-		question: "Which halogenated derivative of methane is a gas at room temperature?",
-		options: ["CH₃Cl", "CH₂Cl₂", "CHCl₃", "CCl₄"],
-		answer: "CH₃Cl",
-		explanation: "Methyl chloride (CH₃Cl) has a boiling point of −24.2 °C, making it a gas."
-	},
-	{
-		id: 26,
-		question: "Why did the EPA ban certain CFCs in aerosols in 1978?",
-		options: ["Toxicity", "Flammability", "Ozone layer depletion", "High cost"],
-		answer: "Ozone layer depletion",
-		explanation: "CFCs were found to release chlorine atoms in the stratosphere, which catalyze the destruction of ozone."
-	},
-	{
-		id: 27,
-		question: "What were Chlorofluorocarbons (CFCs) primarily used for before the 1978 ban?",
-		options: ["Food additives", "Aerosol propellants", "Fertilizers", "Medicines"],
-		answer: "Aerosol propellants",
-		explanation: "CFCs like Freon were used in hair sprays and antiperspirants due to their inertness and low boiling points."
-	},
-	{
-		id: 28,
-		question: "Which of these is a source of methane?",
-		options: ["Distillation of bituminous coal", "Decayed plants", "Aluminum carbide and water", "All of the above"],
-		answer: "All of the above",
-		explanation: "Methane is found in nature from decay and coal, and can be synthesized from carbides."
+		question: "Which halogenated methane derivative was banned by the EPA in 1978 aerosols due to ozone layer depletion?",
+		options: ["CH₃Cl (methyl chloride)", "CH₂Cl₂ (methylene chloride)", "CCl₂F₂ and CCl₃F (CFCs/Freons)", "CHCl₃ (chloroform)"],
+		answer: "CCl₂F₂ and CCl₃F (CFCs/Freons)",
+		explanation: "Chlorofluorocarbons (CFCs) like Freon (CCl₂F₂, CCl₃F) release chlorine atoms in the stratosphere that catalytically destroy ozone molecules, leading to the 1978 EPA ban.",
+		difficulty: "intermediate",
+		structureIllustration: `<svg viewBox="0 0 550 180" xmlns="http://www.w3.org/2000/svg">
+			<rect width="550" height="180" fill="#1a1a1a" rx="8"/>
+			<text x="275" y="25" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="12" font-weight="bold">CFCs & OZONE DEPLETION (EPA Ban 1978)</text>
+			<text x="150" y="60" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="14">CCl₂F₂ (Freon-12)</text>
+			<text x="150" y="78" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">Dichlorodifluoromethane</text>
+			<text x="400" y="60" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="14">CCl₃F (Freon-11)</text>
+			<text x="400" y="78" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">Trichlorofluoromethane</text>
+			<text x="275" y="110" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="13">UV light → Cl• radicals in stratosphere</text>
+			<text x="275" y="135" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="13">Cl• + O₃ → ClO• + O₂ (ozone destruction)</text>
+			<text x="275" y="160" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="11">Uses: aerosol propellants, refrigerants, antiperspirants</text>
+		</svg>`
 	}
 ];

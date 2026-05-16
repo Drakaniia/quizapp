@@ -141,10 +141,26 @@
 								<span class="text-5xl font-black text-[#ffffff10] font-['JetBrains_Mono']">
 									{String(currentIndex + 1).padStart(2, '0')}
 								</span>
-								<h3 class="text-2xl md:text-3xl font-bold leading-tight">
-									{currentQuestion.question}
-								</h3>
+								<div class="space-y-2">
+									<h3 class="text-2xl md:text-3xl font-bold leading-tight">
+										{currentQuestion.question}
+									</h3>
+									{#if currentQuestion.difficulty}
+										<span class="inline-block text-[10px] font-['JetBrains_Mono'] uppercase tracking-widest px-2 py-1 rounded
+											{currentQuestion.difficulty === 'intermediate' ? 'bg-[#00f2ff20] text-[#00f2ff]' : ''}
+											{currentQuestion.difficulty === 'advanced' ? 'bg-[#ff990020] text-[#ff9900]' : ''}
+											{currentQuestion.difficulty === 'expert' ? 'bg-[#ff3e0020] text-[#ff3e00]' : ''}">
+											{currentQuestion.difficulty}
+										</span>
+									{/if}
+								</div>
 							</div>
+
+							{#if currentQuestion.structureIllustration || currentQuestion.reactionScheme}
+								<div class="mt-4 p-4 bg-[#111] border border-[#333] rounded-sm">
+									{@html currentQuestion.structureIllustration || currentQuestion.reactionScheme}
+								</div>
+							{/if}
 
 							<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 								{#each currentQuestion.options as option (option)}

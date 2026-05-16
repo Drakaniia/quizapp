@@ -4,203 +4,277 @@ export interface Question {
 	options: string[];
 	answer: string;
 	explanation: string;
+	difficulty?: 'intermediate' | 'advanced' | 'expert';
+	structureIllustration?: string; // SVG string for molecular structures
+	reactionScheme?: string; // SVG string for reaction mechanisms
 }
 
 export const quizData2: Question[] = [
 	{
 		id: 1,
-		question: "What is the general formula for alkynes?",
-		options: ["CnH2n+2", "CnH2n", "CnH2n-2", "CnH2n-4"],
-		answer: "CnH2n-2",
-		explanation: "Alkynes contain at least one triple bond between two adjacent carbons and follow the general formula CnH2n-2."
+		question: "What is the hybridization and geometry of carbon atoms in ethyne (acetylene)?",
+		options: ["sp³, tetrahedral", "sp², trigonal planar", "sp, linear", "dsp², square planar"],
+		answer: "sp, linear",
+		explanation: "Ethyne has sp hybridized carbons with 2 p orbitals and 2 sp hybrid orbitals, resulting in a linear geometry with 180° bond angles.",
+		difficulty: "intermediate",
+		structureIllustration: `<svg viewBox="0 0 450 140" xmlns="http://www.w3.org/2000/svg">
+			<rect width="450" height="140" fill="#1a1a1a" rx="8"/>
+			<text x="225" y="25" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="12" font-weight="bold">ETHYNE (ACETYLENE): sp HYBRIDIZATION</text>
+			<text x="100" y="70" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="18">H</text>
+			<line x1="120" y1="70" x2="170" y2="70" stroke="#e0e0e0" stroke-width="2"/>
+			<line x1="170" y1="65" x2="280" y2="65" stroke="#bfff00" stroke-width="2"/>
+			<line x1="170" y1="70" x2="280" y2="70" stroke="#bfff00" stroke-width="3"/>
+			<line x1="170" y1="75" x2="280" y2="75" stroke="#bfff00" stroke-width="2"/>
+			<line x1="280" y1="70" x2="330" y2="70" stroke="#e0e0e0" stroke-width="2"/>
+			<text x="350" y="70" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="18">H</text>
+			<text x="225" y="55" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">C≡C triple bond</text>
+			<text x="225" y="100" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="13">Bond angle: 180° (linear)</text>
+			<text x="225" y="125" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">1 σ bond + 2 π bonds between carbons</text>
+		</svg>`
 	},
 	{
 		id: 2,
-		question: "What type of hybrid orbital do carbon atoms in alkynes have?",
-		options: ["sp³", "sp²", "sp", "dsp²"],
-		answer: "sp",
-		explanation: "Alkynes contain carbon atoms with sp hybrid orbitals (2 p orbitals & 2 sp hybrid orbitals)."
+		question: "In the preparation of alkynes from calcium carbide, what is the complete reaction sequence from limestone?",
+		options: [
+			"CaCO₃ → CaO → CaC₂ → C₂H₂",
+			"CaCO₃ → Ca(OH)₂ → CaC₂ → C₂H₄",
+			"CaO → CaCO₃ → CaC₂ → CH₄",
+			"CaCO₃ → CaCl₂ → CaC₂ → C₂H₂"
+		],
+		answer: "CaCO₃ → CaO → CaC₂ → C₂H₂",
+		explanation: "Limestone (CaCO₃) is heated to produce CaO, which reacts with carbon at 2000°C to form CaC₂. Calcium carbide then reacts with water to produce acetylene (C₂H₂).",
+		difficulty: "advanced",
+		reactionScheme: `<svg viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg">
+			<rect width="600" height="180" fill="#1a1a1a" rx="8"/>
+			<text x="300" y="25" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="12" font-weight="bold">ACETYLENE FROM CALCIUM CARBIDE</text>
+			<text x="100" y="55" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="13">CaCO₃</text>
+			<text x="100" y="72" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">Limestone</text>
+			<text x="175" y="60" text-anchor="middle" fill="#bfff00" font-size="16">→</text>
+			<text x="175" y="48" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="9">heat</text>
+			<text x="250" y="55" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="13">CaO + CO₂</text>
+			<text x="325" y="60" text-anchor="middle" fill="#bfff00" font-size="16">→</text>
+			<text x="325" y="48" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="9">3C, 2000°C</text>
+			<text x="400" y="55" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="13">CaC₂ + CO</text>
+			<text x="475" y="60" text-anchor="middle" fill="#bfff00" font-size="16">→</text>
+			<text x="475" y="48" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="9">2H₂O</text>
+			<text x="540" y="55" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="13" font-weight="bold">C₂H₂</text>
+			<text x="540" y="72" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">Acetylene</text>
+			<text x="300" y="110" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">CaC₂ + 2H₂O → HC≡CH + Ca(OH)₂</text>
+			<text x="300" y="140" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="11">Side products: CO and H₂ used in alcohol production</text>
+			<text x="300" y="165" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">6CH₄ + O₂ → 2C₂H₂ + 2CO + 10H₂ (alternative at 1500°C)</text>
+		</svg>`
 	},
 	{
 		id: 3,
-		question: "Are alkynes soluble in water?",
-		options: ["Yes, highly soluble", "No, they are insoluble", "Only at high temperatures", "Only terminal alkynes"],
-		answer: "No, they are insoluble",
-		explanation: "Alkynes are insoluble in water due to their low polarity, but are soluble in solvents of low polarity like ligroin, ether, benzene and CCl₄."
+		question: "Why is the reaction of sodium acetylides limited to PRIMARY alkyl halides?",
+		options: [
+			"Primary halides are cheaper",
+			"Secondary/tertiary halides undergo elimination instead of substitution",
+			"Primary halides react faster with acetylides",
+			"Secondary halides don't react at all"
+		],
+		answer: "Secondary/tertiary halides undergo elimination instead of substitution",
+		explanation: "The acetylide ion is a strong base. With secondary and tertiary halides, it abstracts a β-hydrogen (E2 elimination) rather than performing nucleophilic substitution (SN2).",
+		difficulty: "advanced",
+		reactionScheme: `<svg viewBox="0 0 550 170" xmlns="http://www.w3.org/2000/svg">
+			<rect width="550" height="170" fill="#1a1a1a" rx="8"/>
+			<text x="275" y="25" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="12" font-weight="bold">ACETYLIDE REACTION LIMITATION</text>
+			<text x="275" y="50" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="13">✓ PRIMARY HALIDES: SN2 substitution works</text>
+			<text x="150" y="80" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="12">HC≡C:⁻Na⁺ + CH₃CH₂CH₂CH₂Br</text>
+			<text x="275" y="80" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="16">→</text>
+			<text x="420" y="80" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="12">HC≡C(CH₂)₃CH₃</text>
+			<text x="275" y="110" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="13">✗ SECONDARY/TERTIARY: E2 elimination dominates</text>
+			<text x="150" y="140" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="12">HC≡C:⁻ + (CH₃)₂CHBr</text>
+			<text x="275" y="140" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="16">→</text>
+			<text x="420" y="140" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="12">CH₃CH=CH₂ + HC≡CH + Br⁻</text>
+			<text x="275" y="160" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">Acetylide acts as base (not nucleophile) with 2°/3° halides</text>
+		</svg>`
 	},
 	{
 		id: 4,
-		question: "How does the density of alkynes compare to water?",
-		options: ["More dense", "Less dense", "Equal density", "Varies by temperature"],
-		answer: "Less dense",
-		explanation: "Alkynes are less dense than water, which is a characteristic physical property of these hydrocarbons."
+		question: "What are the stereochemical outcomes when reducing 2-butyne with (a) H₂/Pd-NiBr and (b) Na/NH₃?",
+		options: [
+			"(a) trans-2-butene, (b) cis-2-butene",
+			"(a) cis-2-butene, (b) trans-2-butene",
+			"Both give cis-2-butene",
+			"Both give trans-2-butene"
+		],
+		answer: "(a) cis-2-butene, (b) trans-2-butene",
+		explanation: "Lindlar catalyst (Pd/NiBr) gives syn addition producing cis-alkene. Na/NH₃ reduction proceeds via radical anion intermediate giving trans-alkene (anti addition).",
+		difficulty: "expert",
+		structureIllustration: `<svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+			<rect width="600" height="200" fill="#1a1a1a" rx="8"/>
+			<text x="300" y="25" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="12" font-weight="bold">ALKYNE REDUCTION: STEREOCHEMISTRY</text>
+			<text x="150" y="50" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="13">CH₃−C≡C−CH₃</text>
+			<text x="150" y="65" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">2-butyne</text>
+			<line x1="220" y1="70" x2="300" y2="50" stroke="#bfff00" stroke-width="2"/>
+			<line x1="220" y1="70" x2="300" y2="90" stroke="#bfff00" stroke-width="2"/>
+			<text x="350" y="50" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="12">H₂, Pd/NiBr</text>
+			<text x="350" y="65" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">(a) Syn addition</text>
+			<text x="350" y="90" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="12">Na/NH₃</text>
+			<text x="350" y="105" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">(b) Anti addition</text>
+			<text x="480" y="50" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="12" font-weight="bold">CIS-2-BUTENE</text>
+			<text x="480" y="68" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="11">CH₃    CH₃</text>
+			<text x="480" y="82" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="11">  \\    /</text>
+			<text x="480" y="96" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="11">   C=C</text>
+			<text x="480" y="110" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="11">  /    \\</text>
+			<text x="480" y="124" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="11"> H      H</text>
+			<text x="480" y="145" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="12" font-weight="bold">TRANS-2-BUTENE</text>
+			<text x="480" y="163" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="11">CH₃    H</text>
+			<text x="480" y="177" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="11">  \\    /</text>
+			<text x="480" y="191" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="11">   C=C</text>
+		</svg>`
 	},
 	{
 		id: 5,
-		question: "Why are alkynes more reactive than alkanes and alkenes?",
-		options: ["Longer bond length", "Shorter bond length & increased electron density", "Lower molecular weight", "Higher boiling points"],
-		answer: "Shorter bond length & increased electron density",
-		explanation: "Alkynes are unstable and most reactive compared to alkanes and alkenes because of their shorter bond length and increased electron density."
+		question: "What product forms when acetylene reacts with water in the presence of H⁺ and Hg²⁺ catalyst?",
+		options: ["Ethanol", "Acetaldehyde (ethanal)", "Acetic acid", "Ethylene glycol"],
+		answer: "Acetaldehyde (ethanal)",
+		explanation: "Hg²⁺-catalyzed hydration of acetylene follows Markovnikov addition to form vinyl alcohol (enol), which tautomerizes to acetaldehyde. This is an important industrial process.",
+		difficulty: "advanced",
+		reactionScheme: `<svg viewBox="0 0 550 160" xmlns="http://www.w3.org/2000/svg">
+			<rect width="550" height="160" fill="#1a1a1a" rx="8"/>
+			<text x="275" y="25" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="12" font-weight="bold">ACETYLENE HYDRATION (Industrial Process)</text>
+			<text x="120" y="60" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="15">HC≡CH + H₂O</text>
+			<text x="275" y="50" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="18">→</text>
+			<text x="275" y="40" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="10">H⁺, Hg²⁺</text>
+			<text x="400" y="50" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="13">[CH₂=CH-OH]</text>
+			<text x="400" y="68" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">vinyl alcohol (enol)</text>
+			<text x="275" y="95" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="16">↓ tautomerization</text>
+			<text x="275" y="125" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="15" font-weight="bold">CH₃CHO (acetaldehyde)</text>
+			<text x="275" y="145" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">Can be oxidized to acetic acid (CH₃COOH)</text>
+		</svg>`
 	},
 	{
 		id: 6,
-		question: "What characterizes a terminal alkyne?",
-		options: ["Has a benzene ring", "Has a hydrogen atom bonded to an sp hybridized carbon", "Has only internal triple bonds", "Contains a heteroatom"],
-		answer: "Has a hydrogen atom bonded to an sp hybridized carbon",
-		explanation: "Terminal alkynes have a hydrogen atom bonded to at least one of the sp hybridized carbons involved in the triple bond, such as methyl acetylene."
+		question: "Which class of dienes has DOUBLE BONDS SEPARATED BY EXACTLY ONE SINGLE BOND?",
+		options: ["Cumulated dienes", "Isolated dienes", "Conjugated dienes", "Aromatic dienes"],
+		answer: "Conjugated dienes",
+		explanation: "Conjugated dienes have alternating double-single-double bonds (C=C-C=C). This arrangement allows electron delocalization, making them more stable than isolated dienes.",
+		difficulty: "intermediate",
+		structureIllustration: `<svg viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg">
+			<rect width="600" height="180" fill="#1a1a1a" rx="8"/>
+			<text x="300" y="25" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="12" font-weight="bold">CLASSES OF DIENES</text>
+			<text x="150" y="50" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="11" font-weight="bold">CUMULATED</text>
+			<text x="150" y="70" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="14">CH₂=C=CH₂</text>
+			<text x="150" y="88" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">1,2-Butadiene</text>
+			<text x="150" y="103" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">Neighboring double bonds</text>
+			<text x="300" y="50" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="11" font-weight="bold">CONJUGATED ✓</text>
+			<text x="300" y="70" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="14">CH₂=CH-CH=CH₂</text>
+			<text x="300" y="88" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">1,3-Butadiene</text>
+			<text x="300" y="103" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">Separated by ONE single bond</text>
+			<text x="450" y="50" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="11" font-weight="bold">ISOLATED</text>
+			<text x="450" y="70" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="14">CH₂=CH-CH₂-CH=CH₂</text>
+			<text x="450" y="88" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">1,5-Hexadiene</text>
+			<text x="450" y="103" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">Separated by >1 single bonds</text>
+			<text x="300" y="140" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="12">Conjugated dienes: MORE STABLE due to delocalization</text>
+			<text x="300" y="160" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">Heat of hydrogenation: 54.1 kcal/mol (vs 60.8 for non-conjugated)</text>
+		</svg>`
 	},
 	{
 		id: 7,
-		question: "What is an example of an internal alkyne?",
-		options: ["Methyl acetylene", "Ethyne", "2-pentyne", "Propyne"],
-		answer: "2-pentyne",
-		explanation: "Internal alkynes have something other than hydrogen attached to the sp hybridized carbons, usually carbon atoms. 2-pentyne is an example."
+		question: "What are the TWO types of addition products formed in electrophilic addition to conjugated dienes?",
+		options: ["1,1-addition and 2,2-addition", "1,2-addition and 1,4-addition", "1,3-addition and 2,4-addition", "Markovnikov and anti-Markovnikov only"],
+		answer: "1,2-addition and 1,4-addition",
+		explanation: "Electrophilic addition to conjugated dienes yields a mixture: 1,2-addition (adjacent carbons) and 1,4-addition (ends of conjugated system) via an allylic cation intermediate.",
+		difficulty: "advanced",
+		reactionScheme: `<svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+			<rect width="600" height="200" fill="#1a1a1a" rx="8"/>
+			<text x="300" y="25" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="12" font-weight="bold">ELECTROPHILIC ADDITION TO CONJUGATED DIENES</text>
+			<text x="300" y="50" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="14">CH₂=CH-CH=CH₂ + HBr</text>
+			<text x="300" y="70" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="14">↓ forms allylic cation intermediate</text>
+			<text x="150" y="100" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="12" font-weight="bold">1,2-ADDITION</text>
+			<text x="150" y="120" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="13">CH₃-CHBr-CH=CH₂</text>
+			<text x="150" y="138" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">3-bromo-1-butene</text>
+			<text x="150" y="153" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">Adjacent carbons (C1, C2)</text>
+			<text x="450" y="100" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="12" font-weight="bold">1,4-ADDITION</text>
+			<text x="450" y="120" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="13">CH₃-CH=CH-CH₂Br</text>
+			<text x="450" y="138" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">1-bromo-2-butene</text>
+			<text x="450" y="153" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">Ends of system (C1, C4)</text>
+			<text x="300" y="180" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">Product ratio depends on temperature (kinetic vs thermodynamic control)</text>
+		</svg>`
 	},
 	{
 		id: 8,
-		question: "What is produced when calcium carbide (CaC₂) reacts with water?",
-		options: ["Methane", "Ethane", "Acetylene (HC≡CH)", "Propyne"],
-		answer: "Acetylene (HC≡CH)",
-		explanation: "The reaction CaC₂ + 2H₂O → HC≡CH produces acetylene, which is a common laboratory preparation method."
+		question: "How does heat of hydrogenation demonstrate the stability of conjugated dienes vs non-conjugated dienes?",
+		options: [
+			"Conjugated dienes release MORE heat (less stable)",
+			"Conjugated dienes release LESS heat (more stable): 54.1 vs 60.8 kcal/mol",
+			"Heat of hydrogenation is equal for both",
+			"Non-conjugated dienes cannot be hydrogenated"
+		],
+		answer: "Conjugated dienes release LESS heat (more stable): 54.1 vs 60.8 kcal/mol",
+		explanation: "Lower heat of hydrogenation indicates greater stability. Conjugated dienes (54.1 kcal/mol) are more stable than non-conjugated (60.8 kcal/mol) due to electron delocalization and hyperconjugation.",
+		difficulty: "advanced",
+		structureIllustration: `<svg viewBox="0 0 550 180" xmlns="http://www.w3.org/2000/svg">
+			<rect width="550" height="180" fill="#1a1a1a" rx="8"/>
+			<text x="275" y="25" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="12" font-weight="bold">STABILITY VIA HEAT OF HYDROGENATION</text>
+			<text x="150" y="55" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="11" font-weight="bold">NON-CONJUGATED</text>
+			<text x="150" y="75" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="13">CH₂=CH-CH₂-CH=CH₂</text>
+			<text x="150" y="95" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="11">+ 2H₂ → CH₃CH₂CH₂CH₂CH₃</text>
+			<text x="150" y="120" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="14" font-weight="bold">ΔH = 60.8 kcal/mol</text>
+			<text x="150" y="138" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">Higher heat = LESS stable</text>
+			<text x="400" y="55" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="11" font-weight="bold">CONJUGATED</text>
+			<text x="400" y="75" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="13">CH₂=CH-CH=CH-CH₃</text>
+			<text x="400" y="95" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="11">+ 2H₂ → CH₃CH₂CH₂CH₂CH₃</text>
+			<text x="400" y="120" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="14" font-weight="bold">ΔH = 54.1 kcal/mol</text>
+			<text x="400" y="138" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">Lower heat = MORE stable</text>
+			<text x="275" y="165" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="11">Stability from: (a) Delocalization (b) Hyperconjugation</text>
+		</svg>`
 	},
 	{
 		id: 9,
-		question: "What type of reaction is dehydrohalogenation of alkyl dihalides?",
-		options: ["Addition reaction", "Substitution reaction", "Elimination reaction", "Oxidation reaction"],
-		answer: "Elimination reaction",
-		explanation: "Dehydrohalogenation of alkyl dihalides is an elimination reaction that removes halogen atoms to form alkynes."
+		question: "What heavy metal ion forms INSOLUBLE acetylides when reacted with terminal alkynes?",
+		options: ["Na⁺", "K⁺", "Ag⁺ (silver)", "Mg²⁺"],
+		answer: "Ag⁺ (silver)",
+		explanation: "Terminal alkynes are acidic and react with heavy metal ions like Ag⁺ to form insoluble metal acetylides. This is used as a test for terminal alkynes.",
+		difficulty: "intermediate",
+		reactionScheme: `<svg viewBox="0 0 500 140" xmlns="http://www.w3.org/2000/svg">
+			<rect width="500" height="140" fill="#1a1a1a" rx="8"/>
+			<text x="250" y="25" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="12" font-weight="bold">HEAVY METAL ACETYLIDE FORMATION</text>
+			<text x="130" y="60" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="14">HC≡CH + 2Ag⁺</text>
+			<text x="250" y="60" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="18">→</text>
+			<text x="250" y="48" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="10">alcohol</text>
+			<text x="380" y="60" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="14">AgC≡CAg + 2H⁺</text>
+			<text x="380" y="78" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">silver acetylide (insoluble)</text>
+			<text x="250" y="110" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">Test for terminal alkynes: white precipitate forms</text>
+			<text x="250" y="128" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="11">Also reacts with alkali metals (Na) to liberate H₂ gas</text>
+		</svg>`
 	},
 	{
 		id: 10,
-		question: "What reagent is commonly used for dehydrohalogenation to form alkynes?",
-		options: ["H₂SO₄", "KOH or NaNH₂", "HCl", "Br₂"],
-		answer: "KOH or NaNH₂",
-		explanation: "Strong bases like KOH or NaNH₂ are used to remove HX from dihalides to form alkynes through elimination."
-	},
-	{
-		id: 11,
-		question: "Why is the reaction of sodium acetylides limited to primary alkyl halides?",
-		options: ["Primary halides are cheaper", "Secondary and tertiary halides undergo elimination", "Primary halides are more stable", "Secondary halides don't react"],
-		answer: "Secondary and tertiary halides undergo elimination",
-		explanation: "The reaction is limited to primary halides because secondary and tertiary halides tend to undergo a side reaction (elimination) instead of substitution."
-	},
-	{
-		id: 12,
-		question: "What catalyst is used in the addition of hydrogen to alkynes?",
-		options: ["Platinum", "Ni, Pd, or Li in NH₃", "Iron", "Copper"],
-		answer: "Ni, Pd, or Li in NH₃",
-		explanation: "Catalysts like Ni, Pd/NiBr, or Na/Li in NH₃ are used to add hydrogen to alkynes, converting them to alkenes or alkanes."
-	},
-	{
-		id: 13,
-		question: "What product forms when acetylene reacts with Br₂?",
-		options: ["Ethane", "1,2-dibromoethene", "Bromopropene", "Ethanol"],
-		answer: "1,2-dibromoethene",
-		explanation: "Acetylene reacts with halogens like Br₂ through halogenation to form 1,2-dibromoethene."
-	},
-	{
-		id: 14,
-		question: "What is formed when water is added to acetylene in the presence of H⁺ and Hg²⁺?",
-		options: ["Ethanol", "Acetaldehyde", "Acetic acid", "Ethylene"],
-		answer: "Acetaldehyde",
-		explanation: "The hydration of acetylene forms acetaldehyde, which can be oxidized to acetic acid. This is an extremely important industrial process."
-	},
-	{
-		id: 15,
-		question: "What type of metal forms insoluble acetylides with acetylene?",
-		options: ["Alkali metals", "Heavy metals like Ag⁺", "Transition metals", "Alkaline earth metals"],
-		answer: "Heavy metals like Ag⁺",
-		explanation: "Acidic acetylene reacts with certain heavy metals such as silver (Ag⁺) to form insoluble acetylides."
-	},
-	{
-		id: 16,
-		question: "What is liberated when acetylene reacts with sodium?",
-		options: ["Oxygen gas", "Hydrogen gas", "Nitrogen gas", "Carbon dioxide"],
-		answer: "Hydrogen gas",
-		explanation: "The reaction HC≡C-H + Na → HC≡C⁻Na⁺ + ½H₂ liberates hydrogen gas and forms sodium acetylide."
-	},
-	{
-		id: 17,
-		question: "How many double bonds do dienes contain?",
-		options: ["One", "Two", "Three", "Four"],
-		answer: "Two",
-		explanation: "Dienes are hydrocarbons which contain two double bonds and are intermediate between alkanes and polyenes."
-	},
-	{
-		id: 18,
-		question: "What characterizes cumulated dienes?",
-		options: ["Double bonds separated by two single bonds", "Neighboring double bonds", "Isolated double bonds", "Aromatic rings"],
-		answer: "Neighboring double bonds",
-		explanation: "Cumulated dienes have neighboring double bonds, such as in 1,2-butadiene (CH₂=C=CH₂)."
-	},
-	{
-		id: 19,
-		question: "What is an example of a conjugated diene?",
-		options: ["1,5-Hexadiene", "1,2-Butadiene", "1,3-Butadiene", "Propene"],
-		answer: "1,3-Butadiene",
-		explanation: "Conjugated dienes have double bonds separated by one single bond. 1,3-Butadiene (CH₂=CH-CH=CH₂) is a classic example."
-	},
-	{
-		id: 20,
-		question: "How do isolated dienes behave chemically?",
-		options: ["More reactive than alkenes", "Identical to simple alkenes", "Less reactive than alkenes", "Form aromatic compounds"],
-		answer: "Identical to simple alkenes",
-		explanation: "Isolated dienes have double bonds separated by more than one single bond and are chemically identical to simple alkenes."
-	},
-	{
-		id: 21,
-		question: "What makes conjugated dienes more stable than non-conjugated dienes?",
-		options: ["Higher molecular weight", "Delocalization and hyperconjugation", "More hydrogen atoms", "Longer carbon chains"],
-		answer: "Delocalization and hyperconjugation",
-		explanation: "Conjugated dienes are more stable due to electron delocalization and hyperconjugation, which is observed through lower heat of hydrogenation."
-	},
-	{
-		id: 22,
-		question: "What is the IUPAC name for allene?",
-		options: ["1,2-Butadiene", "Propadiene", "1,3-Butadiene", "Methylallene"],
-		answer: "Propadiene",
-		explanation: "Allene (CH₂=C=CH₂) is systematically named propadiene according to IUPAC nomenclature."
-	},
-	{
-		id: 23,
-		question: "What method is used to prepare dienes by catalytic cracking?",
-		options: ["Oxidation", "Dehydrogenation", "Halogenation", "Hydration"],
-		answer: "Dehydrogenation",
-		explanation: "Dienes can be prepared by catalytic cracking (dehydrogenation), such as converting butane to 1,3-butadiene using heat and a catalyst."
-	},
-	{
-		id: 24,
-		question: "What happens during the dehydration of a diol to form a diene?",
-		options: ["Water molecules are added", "Water molecules are removed", "Hydrogen is added", "Carbon atoms are removed"],
-		answer: "Water molecules are removed",
-		explanation: "Dehydration is the loss of water molecules. When a diol is heated with acid, OH groups are removed, forming double bonds and producing a diene."
-	},
-	{
-		id: 25,
-		question: "What are the two types of addition products in conjugated dienes?",
-		options: ["1,1- and 2,2-addition", "1,2- and 1,4-addition", "1,3- and 2,4-addition", "1,2- and 2,3-addition"],
-		answer: "1,2- and 1,4-addition",
-		explanation: "Electrophilic addition to conjugated dienes yields a mixture of 1,2-addition (adjacent carbons) and 1,4-addition (ends of conjugated system) products."
-	},
-	{
-		id: 26,
-		question: "What intermediate is formed during electrophilic addition to conjugated dienes?",
-		options: ["Carbocation", "Allylic cation", "Free radical", "Carbanion"],
-		answer: "Allylic cation",
-		explanation: "Addition to the end of the conjugated system forms an allylic cation intermediate, which can lead to both 1,2- and 1,4-addition products."
-	},
-	{
-		id: 27,
-		question: "How does the heat of hydrogenation indicate stability in conjugated dienes?",
-		options: ["Higher heat = more stable", "Lower heat = more stable", "No correlation", "Equal for all dienes"],
-		answer: "Lower heat = more stable",
-		explanation: "Conjugated dienes release less heat during hydrogenation (54.1 kcal/mol) compared to non-conjugated dienes (60.8 kcal/mol), indicating greater stability."
-	},
-	{
-		id: 28,
-		question: "Which of the following is NOT a typical reaction of dienes?",
-		options: ["Hydrogenation", "Ozonolysis", "Halogenation", "Decarboxylation"],
-		answer: "Decarboxylation",
-		explanation: "Common reactions of dienes include hydrogenation, ozonolysis, glycol formation, and halogenation. Decarboxylation is not a typical diene reaction."
+		question: "What are the FOUR common reactions of dienes listed in the lecture?",
+		options: [
+			"Hydrogenation, Ozonolysis, Glycol formation, Halogenation",
+			"Combustion, Polymerization, Hydration, Decarboxylation",
+			"Substitution, Elimination, Addition, Rearrangement",
+			"Oxidation, Reduction, Hydrolysis, Condensation"
+		],
+		answer: "Hydrogenation, Ozonolysis, Glycol formation, Halogenation",
+		explanation: "Dienes undergo: (1) Hydrogenation - adds H₂ across double bonds, (2) Ozonolysis - cleaves double bonds with O₃, (3) Glycol formation - adds OH groups, (4) Halogenation - adds X₂.",
+		difficulty: "intermediate",
+		structureIllustration: `<svg viewBox="0 0 550 200" xmlns="http://www.w3.org/2000/svg">
+			<rect width="550" height="200" fill="#1a1a1a" rx="8"/>
+			<text x="275" y="25" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="12" font-weight="bold">REACTIONS OF DIENES</text>
+			<rect x="30" y="45" width="120" height="60" fill="#1a1a2e" stroke="#00f2ff" stroke-width="1" rx="4"/>
+			<text x="90" y="65" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="11" font-weight="bold">1. HYDROGENATION</text>
+			<text x="90" y="82" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="10">Adds H₂ across</text>
+			<text x="90" y="95" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="10">double bonds</text>
+			<rect x="160" y="45" width="120" height="60" fill="#1a1a2e" stroke="#bfff00" stroke-width="1" rx="4"/>
+			<text x="220" y="65" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="11" font-weight="bold">2. OZONOLYSIS</text>
+			<text x="220" y="82" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="10">Cleaves C=C with</text>
+			<text x="220" y="95" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="10">O₃, then Zn/H₂O</text>
+			<rect x="290" y="45" width="120" height="60" fill="#1a1a2e" stroke="#00ff00" stroke-width="1" rx="4"/>
+			<text x="350" y="65" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="11" font-weight="bold">3. GLYCOL FORM</text>
+			<text x="350" y="82" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="10">Adds -OH groups</text>
+			<text x="350" y="95" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="10">to each carbon</text>
+			<rect x="420" y="45" width="120" height="60" fill="#1a1a2e" stroke="#ff3e00" stroke-width="1" rx="4"/>
+			<text x="480" y="65" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="11" font-weight="bold">4. HALOGENATION</text>
+			<text x="480" y="82" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="10">Adds X₂ (Cl₂, Br₂)</text>
+			<text x="480" y="95" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="10">across double bonds</text>
+			<text x="275" y="135" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">Conjugated dienes also show 1,2- and 1,4-addition patterns</text>
+			<text x="275" y="155" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">Isolated dienes behave like simple alkenes</text>
+			<text x="275" y="180" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="11">Note: Decarboxylation is NOT a typical diene reaction</text>
+		</svg>`
 	}
 ];

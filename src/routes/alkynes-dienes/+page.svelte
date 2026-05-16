@@ -13,6 +13,7 @@
 	let startTime = $state(0);
 	let endTime = $state(0);
 	let shuffledQuestions = $state<typeof quizData2>([]);
+	let answers = $state<Array<{ selectedAnswer: string | null; isAnswered: boolean; showExplanation: boolean }>>([]);
 
 	// Derived
 	const currentQuestion = $derived(shuffledQuestions[currentIndex]);
@@ -37,10 +38,12 @@
 		selectedAnswer = null;
 		showExplanation = false;
 		startTime = Date.now();
-		shuffledQuestions = quizData2.map(q => ({
+		const shuffledOrder = shuffleArray(quizData2);
+		shuffledQuestions = shuffledOrder.map(q => ({
 			...q,
 			options: shuffleArray(q.options)
 		}));
+		answers = shuffledQuestions.map(() => ({ selectedAnswer: null, isAnswered: false, showExplanation: false }));
 	}
 
 	function handleAnswer(option: string) {
@@ -50,21 +53,50 @@
 		if (option === currentQuestion.answer) {
 			score++;
 		}
+		answers[currentIndex] = { selectedAnswer: option, isAnswered: true, showExplanation: false };
 		setTimeout(() => {
 			showExplanation = true;
+			answers[currentIndex].showExplanation = true;
 		}, 400);
 	}
 
 	function nextQuestion() {
-		if (currentIndex < quizData2.length - 1) {
+		if (currentIndex < shuffledQuestions.length - 1) {
 			currentIndex++;
-			isAnswered = false;
-			selectedAnswer = null;
-			showExplanation = false;
+			const saved = answers[currentIndex];
+			isAnswered = saved.isAnswered;
+			selectedAnswer = saved.selectedAnswer;
+			showExplanation = saved.showExplanation;
 		} else {
 			endTime = Date.now();
 			currentStep = 'results';
 		}
+	}
+
+	function prevQuestion() {
+		if (currentIndex > 0) {
+			currentIndex--;
+			const saved = answers[currentIndex];
+			isAnswered = saved.isAnswered;
+			selectedAnswer = saved.selectedAnswer;
+			showExplanation = saved.showExplanation;
+		}
+	}
+
+	function refreshQuestion() {
+		const original = quizData2.find(q => q.id === currentQuestion.id)!;
+		shuffledQuestions[currentIndex] = {
+			...original,
+			options: shuffleArray(original.options)
+		};
+		answers[currentIndex] = { selectedAnswer: null, isAnswered: false, showExplanation: false };
+		isAnswered = false;
+		selectedAnswer = null;
+		showExplanation = false;
+	}
+
+	function resetQuiz() {
+		startQuiz();
 	}
 
 	function restart() {
@@ -137,13 +169,38 @@
 		{:else if currentStep === 'quiz'}
 			<section class="flex-1 flex flex-col">
 				<!-- Progress bar -->
-				<div class="w-full bg-[#222] h-1 mb-12 relative overflow-hidden">
+				<div class="w-full bg-[#222] h-1 mb-6 relative overflow-hidden">
 					<div
 						class="absolute top-0 left-0 h-full bg-[#bfff00] transition-all duration-500 ease-out"
 						style="width: {progress}%"
 					>
 						<div class="absolute top-0 right-0 w-8 h-full bg-white blur-md opacity-50"></div>
 					</div>
+				</div>
+
+				<!-- Navigation Controls -->
+				<div class="flex justify-between items-center mb-8">
+					<div class="flex gap-2">
+						<button
+							onclick={prevQuestion}
+							disabled={currentIndex === 0}
+							class="px-4 py-2 text-xs font-['JetBrains_Mono'] uppercase tracking-widest border border-[#333] text-[#888] hover:border-[#bfff00] hover:text-[#bfff00] transition-colors disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-[#333] disabled:hover:text-[#888]"
+						>
+							{'<'} Previous
+						</button>
+						<button
+							onclick={refreshQuestion}
+							class="px-4 py-2 text-xs font-['JetBrains_Mono'] uppercase tracking-widest border border-[#333] text-[#888] hover:border-[#bfff00] hover:text-[#bfff00] transition-colors"
+						>
+							Refresh
+						</button>
+					</div>
+					<button
+						onclick={resetQuiz}
+						class="px-4 py-2 text-xs font-['JetBrains_Mono'] uppercase tracking-widest border border-[#ff3e0060] text-[#ff3e00] hover:border-[#ff3e00] hover:bg-[#ff3e0010] transition-colors"
+					>
+						Reset Quiz
+					</button>
 				</div>
 
 				<div class="flex-1">
@@ -216,14 +273,29 @@
 						<p class="text-[#ccc] text-lg font-light leading-relaxed">
 							{currentQuestion.explanation}
 						</p>
-						<div class="mt-8 flex justify-end">
+					<div class="mt-8 flex justify-between items-center">
+						<div class="flex gap-2">
 							<button
-								onclick={nextQuestion}
-								class="px-8 py-3 bg-white text-black font-black uppercase tracking-widest text-sm hover:bg-[#bfff00] transition-colors"
+								onclick={prevQuestion}
+								disabled={currentIndex === 0}
+								class="px-6 py-3 border border-[#333] text-[#888] font-black uppercase tracking-widest text-sm hover:border-[#bfff00] hover:text-[#bfff00] transition-colors disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-[#333] disabled:hover:text-[#888]"
 							>
-								Continue >
+								{'<'} Previous
+							</button>
+							<button
+								onclick={refreshQuestion}
+								class="px-6 py-3 border border-[#333] text-[#888] font-black uppercase tracking-widest text-sm hover:border-[#bfff00] hover:text-[#bfff00] transition-colors"
+							>
+								Refresh
 							</button>
 						</div>
+						<button
+							onclick={nextQuestion}
+							class="px-8 py-3 bg-white text-black font-black uppercase tracking-widest text-sm hover:bg-[#bfff00] transition-colors"
+						>
+							{currentIndex < shuffledQuestions.length - 1 ? 'Continue >' : 'Finish >'}
+						</button>
+					</div>
 					</div>
 				{/if}
 			</section>

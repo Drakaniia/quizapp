@@ -91,7 +91,8 @@
 
 	<div class="relative max-w-4xl mx-auto px-6 py-12 min-h-screen flex flex-col">
 		<!-- Header -->
-		<header class="flex justify-between items-end mb-12 border-b border-[#ffffff15] pb-6">
+		<header class="flex justify-between items-end mb-12 border-b border-[#ffffff15] pb-6"
+			class:hidden={currentStep !== 'intro'}>
 			<div>
 				<h1 class="text-4xl md:text-6xl font-black tracking-tighter text-white uppercase italic leading-none">
 					The Carbon <span class="text-[#bfff00]">Ledger</span>
@@ -304,5 +305,14 @@
 	}
 	::-webkit-scrollbar-thumb:hover {
 		background: #bfff00;
+	}
+	.hidden {
+		display: none;
+	}
+
+	@media (min-width: 768px) {
+		.hidden {
+			display: flex;
+		}
 	}
 </style>

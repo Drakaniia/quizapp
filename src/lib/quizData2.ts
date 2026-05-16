@@ -276,5 +276,137 @@ export const quizData2: Question[] = [
 			<text x="275" y="155" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">Isolated dienes behave like simple alkenes</text>
 			<text x="275" y="180" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="11">Note: Decarboxylation is NOT a typical diene reaction</text>
 		</svg>`
+	},
+	{
+		id: 11,
+		question: "What is the general formula for alkynes?",
+		options: ["CnH₂n", "CnH₂n₊₂", "CnH₂n₋₂", "CnHₙ"],
+		answer: "CnH₂n₋₂",
+		explanation: "Alkynes have the general formula CnH₂n₋₂, reflecting the presence of one triple bond which removes 4 hydrogens compared to the saturated alkane formula CnH₂n₊₂.",
+		difficulty: "intermediate"
+	},
+	{
+		id: 12,
+		question: "What is the boiling point of ethyne (acetylene)?",
+		options: ["−75°C", "−23°C", "9°C", "40°C"],
+		answer: "−75°C",
+		explanation: "Ethyne (acetylene) has a boiling point of −75°C and a melting point of −82°C. It is the simplest alkyne with formula C₂H₂.",
+		difficulty: "intermediate"
+	},
+	{
+		id: 13,
+		question: "Why are alkynes more reactive than alkanes and alkenes?",
+		options: [
+			"They have longer bond lengths",
+			"Shorter bond length and increased electron density at the triple bond",
+			"They are more polar than alkenes",
+			"They have sp³ hybridization"
+		],
+		answer: "Shorter bond length and increased electron density at the triple bond",
+		explanation: "Alkynes are unstable and most reactive compared to alkanes and alkenes because of their shorter bond length and increased electron density at the triple bond, making them susceptible to electrophilic attack.",
+		difficulty: "advanced"
+	},
+	{
+		id: 14,
+		question: "What is the difference between terminal and internal alkynes?",
+		options: [
+			"Terminal alkynes have a hydrogen bonded to an sp carbon; internal have other groups",
+			"Terminal alkynes are more stable than internal alkynes",
+			"Internal alkynes have triple bonds at the end of the chain",
+			"There is no difference between them"
+		],
+		answer: "Terminal alkynes have a hydrogen bonded to an sp carbon; internal have other groups",
+		explanation: "Terminal alkynes have a hydrogen atom bonded to at least one of the sp hybridized carbons (e.g., methyl acetylene). Internal alkynes have something other than hydrogen attached to the sp carbons (e.g., 2-pentyne).",
+		difficulty: "intermediate"
+	},
+	{
+		id: 15,
+		question: "What alternative method produces acetylene from methane at 1500°C?",
+		options: [
+			"6CH₄ + O₂ → 2C₂H₂ + 2CO + 10H₂",
+			"CH₄ + H₂O → C₂H₂ + 3H₂",
+			"2CH₄ → C₂H₂ + 3H₂",
+			"CH₄ + Cl₂ → C₂H₂ + 2HCl"
+		],
+		answer: "6CH₄ + O₂ → 2C₂H₂ + 2CO + 10H₂",
+		explanation: "At 1500°C, methane reacts with oxygen to produce acetylene. CO and H₂ are important side products needed in the production of alcohol.",
+		difficulty: "advanced",
+		reactionScheme: `<svg viewBox="0 0 550 140" xmlns="http://www.w3.org/2000/svg">
+			<rect width="550" height="140" fill="#1a1a1a" rx="8"/>
+			<text x="275" y="25" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="12" font-weight="bold">ACETYLENE FROM METHANE (1500°C)</text>
+			<text x="130" y="65" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="14">6CH₄ + O₂</text>
+			<text x="275" y="65" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="18">→</text>
+			<text x="275" y="52" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="10">1500°C</text>
+			<text x="420" y="55" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="13">2C₂H₂ + 2CO + 10H₂</text>
+			<text x="420" y="75" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">CO and H₂ used in alcohol production</text>
+			<text x="275" y="110" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">Alternative to calcium carbide method</text>
+		</svg>`
+	},
+	{
+		id: 16,
+		question: "What reagent is used for dehydrohalogenation of alkyl dihalides to form alkynes?",
+		options: ["H₂SO₄", "KOH or NaNH₂", "NaBH₄", "Hg(OAc)₂"],
+		answer: "KOH or NaNH₂",
+		explanation: "Dehydrohalogenation of alkyl dihalides uses KOH or NaNH₂ to eliminate two HX molecules, forming the triple bond. This reaction is useful since dihalides are readily obtained from alkenes.",
+		difficulty: "advanced"
+	},
+	{
+		id: 17,
+		question: "What is the IUPAC name for the diene commonly called 'divinyl'?",
+		options: ["Propadiene", "1,3-Butadiene", "1,5-Hexadiene", "1,2-Butadiene"],
+		answer: "1,3-Butadiene",
+		explanation: "Divinyl is the common name for 1,3-butadiene (CH₂=CH-CH=CH₂), which is a conjugated diene. Other examples: allene = propadiene, diallyl = 1,5-hexadiene.",
+		difficulty: "intermediate"
+	},
+	{
+		id: 18,
+		question: "How are dienes usually prepared?",
+		options: [
+			"By direct hydrogenation of alkanes",
+			"By adaptations of methods used to make simple alkenes, such as catalytic cracking",
+			"By halogenation of alkynes",
+			"By hydration of alcohols only"
+		],
+		answer: "By adaptations of methods used to make simple alkenes, such as catalytic cracking",
+		explanation: "Dienes are usually prepared by adaptations of the methods used to make simple alkenes, including catalytic cracking (dehydrogenation) and dehydration of diols.",
+		difficulty: "intermediate"
+	},
+	{
+		id: 19,
+		question: "What three ways do conjugated dienes differ from simple alkenes?",
+		options: [
+			"They are less stable, favor 1,2-addition, and are less reactive",
+			"They are more stable, favor 1,4-addition, and are more reactive toward free radical addition",
+			"They have identical reactivity but different boiling points",
+			"They cannot undergo addition reactions"
+		],
+		answer: "They are more stable, favor 1,4-addition, and are more reactive toward free radical addition",
+		explanation: "Conjugated dienes differ from simple alkenes in three ways: (a) they are more stable due to delocalization, (b) they favor 1,4-addition over 1,2-addition, (c) toward free radical addition, they are more reactive.",
+		difficulty: "advanced"
+	},
+	{
+		id: 20,
+		question: "What product forms when acetylene reacts with excess HCl followed by excess HI?",
+		options: [
+			"1,1-dichloroethane",
+			"CH₃-C(Cl)(I)-CH₃ (geminal dihalide with Cl and I)",
+			"1,2-dichloroethene",
+			"Ethane"
+		],
+		answer: "CH₃-C(Cl)(I)-CH₃ (geminal dihalide with Cl and I)",
+		explanation: "With excess hydrogen halides, a second addition occurs to the alkene product, giving a geminal dihalide. First HCl adds to form chloropropene, then HI adds to give the geminal dihalide with both Cl and I on the same carbon.",
+		difficulty: "expert",
+		reactionScheme: `<svg viewBox="0 0 550 160" xmlns="http://www.w3.org/2000/svg">
+			<rect width="550" height="160" fill="#1a1a1a" rx="8"/>
+			<text x="275" y="25" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="12" font-weight="bold">EXCESS HX ADDITION TO ALKYNES</text>
+			<text x="100" y="55" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="13">CH₃C≡CH + HCl</text>
+			<text x="275" y="55" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="16">→</text>
+			<text x="400" y="55" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="13">CH₃CCl=CH₂</text>
+			<text x="275" y="85" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="16">+ HI →</text>
+			<text x="400" y="85" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="13" font-weight="bold">CH₃-C(Cl)(I)-CH₃</text>
+			<text x="400" y="103" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">geminal dihalide</text>
+			<text x="275" y="135" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">Second addition yields geminal dihalide</text>
+			<text x="275" y="152" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="10">Both halogens on the same carbon</text>
+		</svg>`
 	}
 ];

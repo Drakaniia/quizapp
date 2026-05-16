@@ -252,5 +252,145 @@ export const quizData3: Question[] = [
 			<text x="350" y="113" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">Also from petroleum</text>
 			<text x="250" y="132" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">Alkenes: colorless gases, lighter than water, insoluble in water</text>
 		</svg>`
+	},
+	{
+		id: 11,
+		question: "What is another name for alkenes, derived from their fat-dissolving property?",
+		options: ["Paraffins", "Olefins", "Aromatics", "Naphthenes"],
+		answer: "Olefins",
+		explanation: "Alkenes are also called olefins, which means 'fat dissolving'. This name reflects their ability to dissolve fats and oils due to their nonpolar nature.",
+		difficulty: "intermediate"
+	},
+	{
+		id: 12,
+		question: "What polymer is made from tetrafluoroethene (F₂C=CF₂)?",
+		options: ["Polyethylene", "PVC (polyvinyl chloride)", "PTFE (Teflon)", "Polystyrene"],
+		answer: "PTFE (Teflon)",
+		explanation: "Tetrafluoroethene polymerizes to form polytetrafluoroethene (PTFE), commonly known as Teflon. It is used for coatings and gaskets due to its non-stick properties.",
+		difficulty: "intermediate"
+	},
+	{
+		id: 13,
+		question: "What are the FOUR preparation methods for alkenes?",
+		options: [
+			"Dehydrohalogenation, Dehydration, Dehalogenation, Reduction of alkynes",
+			"Hydrogenation, Hydration, Halogenation, Polymerization",
+			"Combustion, Substitution, Addition, Elimination",
+			"Oxidation, Reduction, Hydrolysis, Condensation"
+		],
+		answer: "Dehydrohalogenation, Dehydration, Dehalogenation, Reduction of alkynes",
+		explanation: "Alkenes are prepared by: (1) Dehydrohalogenation of alkyl halides, (2) Dehydration of alcohols, (3) Dehalogenation of vicinal dihalides, (4) Reduction of alkynes.",
+		difficulty: "intermediate"
+	},
+	{
+		id: 14,
+		question: "What is the ease order of dehydration of alcohols?",
+		options: ["1° > 2° > 3°", "3° > 2° > 1°", "2° > 1° > 3°", "All react equally"],
+		answer: "3° > 2° > 1°",
+		explanation: "Tertiary alcohols dehydrate most easily, followed by secondary, then primary. This order reflects the stability of the carbocation intermediate formed during the reaction.",
+		difficulty: "advanced"
+	},
+	{
+		id: 15,
+		question: "What are the three steps in the mechanism of alcohol dehydration?",
+		options: [
+			"(1) Protonation of alcohol, (2) Formation of carbonium ion + water, (3) Loss of H⁺ to form alkene",
+			"(1) Deprotonation, (2) Carbocation formation, (3) Nucleophilic attack",
+			"(1) Oxidation, (2) Reduction, (3) Elimination",
+			"(1) Addition, (2) Substitution, (3) Rearrangement"
+		],
+		answer: "(1) Protonation of alcohol, (2) Formation of carbonium ion + water, (3) Loss of H⁺ to form alkene",
+		explanation: "The mechanism of alcohol dehydration involves: Step 1 - Alcohol unites with H⁺ to form protonated alcohol. Step 2 - Alcohol dissociates into water and carbonium ion. Step 3 - The carbonium ion loses H⁺ to form the alkene.",
+		difficulty: "advanced",
+		reactionScheme: `<svg viewBox="0 0 550 180" xmlns="http://www.w3.org/2000/svg">
+			<rect width="550" height="180" fill="#1a1a1a" rx="8"/>
+			<text x="275" y="25" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="12" font-weight="bold">MECHANISM OF ALCOHOL DEHYDRATION</text>
+			<text x="275" y="50" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="12">Step 1: R-OH + H⁺ → R-OH₂⁺ (protonated alcohol)</text>
+			<text x="275" y="80" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="12">Step 2: R-OH₂⁺ → R⁺ + H₂O (carbonium ion)</text>
+			<text x="275" y="110" text-anchor="middle" fill="#ff9900" font-family="JetBrains Mono" font-size="12">Step 3: R⁺ → C=C + H⁺ (alkene formed)</text>
+			<text x="275" y="145" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">Acid catalyst (H₂SO₄) serves as H⁺ donor</text>
+			<text x="275" y="165" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="11">Ease of dehydration: 3° > 2° > 1°</text>
+		</svg>`
+	},
+	{
+		id: 16,
+		question: "What product forms when 2,3-dibromobutane reacts with Zn (dehalogenation)?",
+		options: ["Butane", "2-butene", "1-butyne", "2,3-dibromobutane stays unchanged"],
+		answer: "2-butene",
+		explanation: "Dehalogenation of vicinal dihalides with zinc removes the two halogen atoms from adjacent carbons, forming a double bond. 2,3-dibromobutane yields 2-butene + ZnBr₂.",
+		difficulty: "advanced",
+		reactionScheme: `<svg viewBox="0 0 500 140" xmlns="http://www.w3.org/2000/svg">
+			<rect width="500" height="140" fill="#1a1a1a" rx="8"/>
+			<text x="250" y="25" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="12" font-weight="bold">DEHALOGENATION OF VICINAL DIHALIDES</text>
+			<text x="120" y="65" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="14">CH₃CHBrCHBrCH₃</text>
+			<text x="120" y="82" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">2,3-dibromobutane</text>
+			<text x="250" y="65" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="18">+</text>
+			<text x="250" y="50" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="12">Zn</text>
+			<text x="250" y="82" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="16">→</text>
+			<text x="380" y="55" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="14" font-weight="bold">CH₃CH=CHCH₃</text>
+			<text x="380" y="73" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">2-butene</text>
+			<text x="380" y="93" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">+ ZnBr₂</text>
+			<text x="250" y="125" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">Vicinal = halogens on adjacent carbons</text>
+		</svg>`
+	},
+	{
+		id: 17,
+		question: "What polymer is produced from styrene (H₂C=CHC₆H₅)?",
+		options: ["Polyethylene", "PVC", "Polystyrene (Styron)", "PTFE (Teflon)"],
+		answer: "Polystyrene (Styron)",
+		explanation: "Styrene polymerizes to form polystyrene (also called Styron), which is used for foam packaging and other applications. The phenyl group (C₆H₅) gives polystyrene its characteristic properties.",
+		difficulty: "intermediate"
+	},
+	{
+		id: 18,
+		question: "What does hydroboration-oxidation of an alkene produce?",
+		options: [
+			"Markovnikov alcohol",
+			"Anti-Markovnikov alcohol (OH adds to less substituted carbon)",
+			"Vicinal dihalide",
+			"Alkane"
+		],
+		answer: "Anti-Markovnikov alcohol (OH adds to less substituted carbon)",
+		explanation: "Hydroboration-oxidation is a two-step process that adds water across a double bond with anti-Markovnikov orientation. The OH group ends up on the less substituted carbon, opposite to acid-catalyzed hydration.",
+		difficulty: "expert"
+	},
+	{
+		id: 19,
+		question: "What are the possible fates of a carbocation intermediate?",
+		options: [
+			"Only combine with a negative ion",
+			"Combine with anion, rearrange, eliminate H⁺, add to alkene, or abstract hydride",
+			"Only eliminate to form an alkene",
+			"Only rearrange to a more stable carbocation"
+		],
+		answer: "Combine with anion, rearrange, eliminate H⁺, add to alkene, or abstract hydride",
+		explanation: "A carbocation may: (a) combine with a negative ion, (b) rearrange to a more stable carbocation, (c) eliminate H⁺ to form an alkene, (d) add to an alkene to form a larger carbocation, (e) abstract a hydride ion from an alkane.",
+		difficulty: "advanced"
+	},
+	{
+		id: 20,
+		question: "What product forms when isobutylene undergoes dimerization with H₂SO₄?",
+		options: [
+			"2,4,4-trimethyl-1-pentene and 2,4,4-trimethyl-2-pentene",
+			"Octane",
+			"2-methylpropane",
+			"Isobutane"
+		],
+		answer: "2,4,4-trimethyl-1-pentene and 2,4,4-trimethyl-2-pentene",
+		explanation: "Dimerization of isobutylene (two isobutylene units combine) with H₂SO₄ produces a mixture of 2,4,4-trimethyl-1-pentene and 2,4,4-trimethyl-2-pentene. The product contains exactly twice the number of C and H atoms as the original.",
+		difficulty: "expert",
+		reactionScheme: `<svg viewBox="0 0 550 160" xmlns="http://www.w3.org/2000/svg">
+			<rect width="550" height="160" fill="#1a1a1a" rx="8"/>
+			<text x="275" y="25" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="12" font-weight="bold">DIMERIZATION OF ISOBUTYLENE</text>
+			<text x="130" y="55" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="12">2 × (CH₃)₂C=CH₂</text>
+			<text x="130" y="72" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="10">isobutylene</text>
+			<text x="275" y="60" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="18">→</text>
+			<text x="275" y="48" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="10">H₂SO₄</text>
+			<text x="420" y="50" text-anchor="middle" fill="#00ff00" font-family="JetBrains Mono" font-size="11" font-weight="bold">2,4,4-trimethyl-2-pentene</text>
+			<text x="420" y="70" text-anchor="middle" fill="#ff9900" font-family="JetBrains Mono" font-size="11">+ 2,4,4-trimethyl-1-pentene</text>
+			<text x="275" y="105" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">Dimer = product has 2× the C & H of original</text>
+			<text x="275" y="125" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">Mechanism: tert-butyl cation adds to isobutylene</text>
+			<text x="275" y="145" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="10">Forms more stable tertiary cation intermediate</text>
+		</svg>`
 	}
 ];

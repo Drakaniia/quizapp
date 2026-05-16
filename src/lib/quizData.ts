@@ -210,5 +210,115 @@ export const quizData: Question[] = [
 			<text x="275" y="135" text-anchor="middle" fill="#ff3e00" font-family="JetBrains Mono" font-size="13">Cl• + O₃ → ClO• + O₂ (ozone destruction)</text>
 			<text x="275" y="160" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="11">Uses: aerosol propellants, refrigerants, antiperspirants</text>
 		</svg>`
+	},
+	{
+		id: 11,
+		question: "What is the complete combustion equation for methane?",
+		options: ["CH₄ + O₂ → CO + 2H₂O", "CH₄ + 2O₂ → CO₂ + 2H₂O + heat (213 kcal)", "CH₄ + O₂ → C + 2H₂O", "2CH₄ + 3O₂ → 2CO + 4H₂O"],
+		answer: "CH₄ + 2O₂ → CO₂ + 2H₂O + heat (213 kcal)",
+		explanation: "Complete combustion of methane produces carbon dioxide, water, and releases 213 kcal of heat energy. This makes methane an important source of heat and energy.",
+		difficulty: "intermediate"
+	},
+	{
+		id: 12,
+		question: "What common names are used for methane?",
+		options: ["Firedamp, marsh gas, biogas", "Natural gas, propane, butane", "Acetylene, ethylene, propylene", "Freon, halon, chloroform"],
+		answer: "Firedamp, marsh gas, biogas",
+		explanation: "Methane is commonly known as firedamp (in coal mines), marsh gas (produced in swamps), and biogas (from organic decomposition).",
+		difficulty: "intermediate"
+	},
+	{
+		id: 13,
+		question: "What are the physical properties of methane at room temperature?",
+		options: [
+			"Colorless liquid, soluble in water, BP = 100°C",
+			"Colorless gas, insoluble in water, BP = −161.5°C, MP = −183°C",
+			"Yellow gas, soluble in benzene, BP = −50°C",
+			"Colorless gas, soluble in water, BP = 0°C"
+		],
+		answer: "Colorless gas, insoluble in water, BP = −161.5°C, MP = −183°C",
+		explanation: "Methane is a colorless, nonpolar gas at room temperature. It is insoluble in water but soluble in benzene, CCl₄, ether, and gasoline. Its boiling point is −161.5°C and melting point is −183°C.",
+		difficulty: "intermediate"
+	},
+	{
+		id: 14,
+		question: "Methane can be produced by the reaction of aluminum carbide (Al₄C₃) with what substance?",
+		options: ["Hydrochloric acid", "Water", "Oxygen", "Sodium hydroxide"],
+		answer: "Water",
+		explanation: "Aluminum carbide (Al₄C₃) reacts with water to produce methane. This is one of the laboratory methods for methane preparation alongside decarboxylation of sodium acetate.",
+		difficulty: "advanced"
+	},
+	{
+		id: 15,
+		question: "In the first propagation step of methane chlorination (CH₄ + Cl• → •CH₃ + HCl), what is the enthalpy change?",
+		options: ["−87 kJ/mol", "+243.4 kJ/mol", "−16 kJ/mol", "+16 kJ/mol"],
+		answer: "−16 kJ/mol",
+		explanation: "The first propagation step where a chlorine radical abstracts a hydrogen from methane is slightly exothermic with ΔH° = −16 kJ/mol.",
+		difficulty: "advanced",
+		reactionScheme: `<svg viewBox="0 0 500 140" xmlns="http://www.w3.org/2000/svg">
+			<rect width="500" height="140" fill="#1a1a1a" rx="8"/>
+			<text x="250" y="25" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="12" font-weight="bold">PROPAGATION STEP 1</text>
+			<text x="120" y="65" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="16">CH₄ + Cl•</text>
+			<text x="250" y="65" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="20">→</text>
+			<text x="380" y="65" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="16">•CH₃ + HCl</text>
+			<text x="250" y="100" text-anchor="middle" fill="#ff9900" font-family="JetBrains Mono" font-size="14">ΔH° = −16 kJ/mol (slightly exothermic)</text>
+			<text x="250" y="125" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">Cl• abstracts H from methane</text>
+		</svg>`
+	},
+	{
+		id: 16,
+		question: "What intermolecular force is present in methane?",
+		options: ["Hydrogen bonding", "Dipole-dipole interactions", "Van der Waals forces", "Ionic bonding"],
+		answer: "Van der Waals forces",
+		explanation: "Methane is nonpolar, so the only intermolecular forces present are Van der Waals (London dispersion) forces. This explains its low boiling point and insolubility in water.",
+		difficulty: "intermediate"
+	},
+	{
+		id: 17,
+		question: "What mixture passing through electric discharge can produce amino acids from methane?",
+		options: ["CH₄, H₂O, NH₃, and H₂", "CH₄, O₂, CO₂, and N₂", "CH₄, Cl₂, HCl, and H₂O", "CH₄, H₂, He, and Ar"],
+		answer: "CH₄, H₂O, NH₃, and H₂",
+		explanation: "A mixture of methane, water, ammonia, and hydrogen passed through electric discharge can produce amino acids, the building blocks of proteins. This relates to theories about the origin of life.",
+		difficulty: "advanced"
+	},
+	{
+		id: 18,
+		question: "Which chlorinated methane derivative has a boiling point of 61.7°C and is known as chloroform?",
+		options: ["CH₃Cl", "CH₂Cl₂", "CHCl₃", "CCl₄"],
+		answer: "CHCl₃",
+		explanation: "Chloroform (CHCl₃) has a boiling point of 61.7°C and is a liquid at room temperature. It is one of the chlorinated derivatives of methane used as a nonpolar solvent.",
+		difficulty: "intermediate"
+	},
+	{
+		id: 19,
+		question: "Why are chlorinated hydrocarbons excellent solvents for nonpolar solutes?",
+		options: [
+			"They are highly polar and ionic",
+			"They are less volatile and significantly less flammable than hydrocarbons",
+			"They have high boiling points above 200°C",
+			"They react chemically with solutes"
+		],
+		answer: "They are less volatile and significantly less flammable than hydrocarbons",
+		explanation: "Chlorinated hydrocarbons make excellent solvents for nonpolar solutes because they share similar nonpolar characteristics but have advantages: they are less volatile and significantly less flammable than pure hydrocarbons.",
+		difficulty: "advanced"
+	},
+	{
+		id: 20,
+		question: "What is the general formula for alkanes, and how does methane fit into this series?",
+		options: ["CnH₂n; methane is C₁H₂", "CnH₂n₊₂; methane is C₁H₄", "CnH₂n₋₂; methane is C₁H₀", "CnHₙ; methane is C₁H₁"],
+		answer: "CnH₂n₊₂; methane is C₁H₄",
+		explanation: "Alkanes follow the general formula CnH₂n₊₂. Methane (CH₄) is the simplest alkane where n=1, giving C₁H₄. All carbons in alkanes are sp³ hybridized with 109.5° bond angles.",
+		difficulty: "intermediate",
+		structureIllustration: `<svg viewBox="0 0 500 160" xmlns="http://www.w3.org/2000/svg">
+			<rect width="500" height="160" fill="#1a1a1a" rx="8"/>
+			<text x="250" y="25" text-anchor="middle" fill="#00f2ff" font-family="JetBrains Mono" font-size="12" font-weight="bold">ALKANE GENERAL FORMULA: CnH₂n₊₂</text>
+			<text x="100" y="60" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="13">Methane: CH₄</text>
+			<text x="220" y="60" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="13">Ethane: C₂H₆</text>
+			<text x="340" y="60" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="13">Propane: C₃H₈</text>
+			<text x="440" y="60" text-anchor="middle" fill="#e0e0e0" font-family="JetBrains Mono" font-size="13">Butane: C₄H₁₀</text>
+			<text x="250" y="100" text-anchor="middle" fill="#bfff00" font-family="JetBrains Mono" font-size="14">All sp³ | All 109.5° | Saturated</text>
+			<text x="250" y="130" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">Each carbon has 4 single bonds (σ bonds)</text>
+			<text x="250" y="150" text-anchor="middle" fill="#888" font-family="JetBrains Mono" font-size="11">Only C and H atoms | Nonpolar</text>
+		</svg>`
 	}
 ];

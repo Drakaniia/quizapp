@@ -12,11 +12,21 @@
 	let showExplanation = $state(false);
 	let startTime = $state(0);
 	let endTime = $state(0);
+	let shuffledQuestions = $state<typeof quizData>([]);
 
 	// Derived
-	const currentQuestion = $derived(quizData[currentIndex]);
-	const progress = $derived(((currentIndex + 1) / quizData.length) * 100);
+	const currentQuestion = $derived(shuffledQuestions[currentIndex]);
+	const progress = $derived(((currentIndex + 1) / shuffledQuestions.length) * 100);
 	const timeTaken = $derived(endTime ? Math.floor((endTime - startTime) / 1000) : 0);
+
+	function shuffleArray<T>(array: T[]): T[] {
+		const shuffled = [...array];
+		for (let i = shuffled.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+		}
+		return shuffled;
+	}
 
 	// Actions
 	function startQuiz() {
@@ -27,6 +37,10 @@
 		selectedAnswer = null;
 		showExplanation = false;
 		startTime = Date.now();
+		shuffledQuestions = quizData.map(q => ({
+			...q,
+			options: shuffleArray(q.options)
+		}));
 	}
 
 	function handleAnswer(option: string) {
@@ -116,7 +130,7 @@
 					</div>
 				</div>
 				<p class="text-[10px] font-['JetBrains_Mono'] text-[#444] uppercase tracking-widest">
-					Total Items: {quizData.length} // Complexity: Undergraduate
+					Total Items: {shuffledQuestions.length} // Complexity: Undergraduate
 				</p>
 			</section>
 		{:else if currentStep === 'quiz'}
@@ -224,14 +238,14 @@
 					
 					<div class="mb-12">
 						<div class="text-[120px] font-black leading-none text-white tracking-tighter mb-2">
-							{Math.round((score / quizData.length) * 100)}<span class="text-3xl text-[#00f2ff]">%</span>
+							{Math.round((score / shuffledQuestions.length) * 100)}<span class="text-3xl text-[#00f2ff]">%</span>
 						</div>
 						<p class="text-[#666] uppercase tracking-widest font-['JetBrains_Mono'] text-sm">Final Proficiency Score</p>
 					</div>
 
 					<div class="grid grid-cols-2 gap-4 mb-12 border-y border-[#ffffff10] py-8">
 						<div>
-							<p class="text-2xl font-bold text-white">{score} / {quizData.length}</p>
+							<p class="text-2xl font-bold text-white">{score} / {shuffledQuestions.length}</p>
 							<p class="text-[10px] uppercase tracking-widest text-[#555]">Correct Entries</p>
 						</div>
 						<div>

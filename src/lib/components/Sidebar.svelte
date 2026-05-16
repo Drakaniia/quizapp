@@ -10,6 +10,13 @@
 			icon: '⚛️'
 		},
 		{
+			id: 'alkenes',
+			title: 'Alkenes',
+			description: 'Double bonds, isomerism, and addition reactions',
+			href: '/alkenes',
+			icon: '⬡'
+		},
+		{
 			id: 'alkynes-dienes',
 			title: 'Alkynes & Dienes',
 			description: 'Triple bonds, conjugation, and reactions',

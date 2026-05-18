@@ -9,21 +9,21 @@
 			title: 'Hydrocarbons & Methane',
 			description: 'Properties, reactions, and halogenation',
 			href: '/',
-			icon: '⚛️'
+			icon: 'HC'
 		},
 		{
 			id: 'alkenes',
 			title: 'Alkenes',
 			description: 'Double bonds, isomerism, and addition reactions',
 			href: '/alkenes',
-			icon: '⬡'
+			icon: 'C=C'
 		},
 		{
 			id: 'alkynes-dienes',
 			title: 'Alkynes & Dienes',
 			description: 'Triple bonds, conjugation, and reactions',
 			href: '/alkynes-dienes',
-			icon: '🔗'
+			icon: 'C#C'
 		},
 		{
 			id: 'animal-diversity',
@@ -63,9 +63,9 @@
 	onclick={toggle}
 >
 	{#if isOpen}
-		✕
+		X
 	{:else}
-		☰
+		Menu
 	{/if}
 </button>
 
@@ -88,7 +88,7 @@
 	<!-- Header -->
 	<div class="mb-8 border-b border-[#ffffff15] pb-6">
 		<h2 class="text-2xl font-black tracking-tighter text-white uppercase italic">
-			Quiz <span class="text-[#00f2ff]">Topics</span>
+			Study <span class="text-[#00f2ff]">Quizzes</span>
 		</h2>
 		<p class="mt-2 font-['JetBrains_Mono'] text-[10px] tracking-[0.2em] text-[#555] uppercase">
 			Select Module
@@ -123,7 +123,7 @@
 	<!-- Footer -->
 	<div class="mt-6 border-t border-[#ffffff15] pt-6">
 		<p class="text-center font-['JetBrains_Mono'] text-[8px] tracking-widest text-[#444] uppercase">
-			Carbon Ledger v2.0
+			Quiz App v2.0
 		</p>
 	</div>
 </aside>

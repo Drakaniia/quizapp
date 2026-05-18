@@ -13,7 +13,9 @@
 	let startTime = $state(0);
 	let endTime = $state(0);
 	let shuffledQuestions = $state<typeof quizData3>([]);
-	let answers = $state<Array<{ selectedAnswer: string | null; isAnswered: boolean; showExplanation: boolean }>>([]);
+	let answers = $state<
+		Array<{ selectedAnswer: string | null; isAnswered: boolean; showExplanation: boolean }>
+	>([]);
 
 	// Derived
 	const currentQuestion = $derived(shuffledQuestions[currentIndex]);
@@ -39,11 +41,15 @@
 		showExplanation = false;
 		startTime = Date.now();
 		const shuffledOrder = shuffleArray(quizData3);
-		shuffledQuestions = shuffledOrder.map(q => ({
+		shuffledQuestions = shuffledOrder.map((q) => ({
 			...q,
 			options: shuffleArray(q.options)
 		}));
-		answers = shuffledQuestions.map(() => ({ selectedAnswer: null, isAnswered: false, showExplanation: false }));
+		answers = shuffledQuestions.map(() => ({
+			selectedAnswer: null,
+			isAnswered: false,
+			showExplanation: false
+		}));
 	}
 
 	function handleAnswer(option: string) {
@@ -84,7 +90,7 @@
 	}
 
 	function refreshQuestion() {
-		const original = quizData3.find(q => q.id === currentQuestion.id)!;
+		const original = quizData3.find((q) => q.id === currentQuestion.id)!;
 		shuffledQuestions[currentIndex] = {
 			...original,
 			options: shuffleArray(original.options)
@@ -105,7 +111,7 @@
 </script>
 
 <svelte:head>
-	<title>The Carbon Ledger | Alkenes Quiz</title>
+	<title>Alkenes Quiz</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 	<link
@@ -114,90 +120,112 @@
 	/>
 </svelte:head>
 
-<main class="min-h-screen bg-[#0a0a0a] text-[#e0e0e0] font-['Outfit'] selection:bg-[#00f2ff] selection:text-[#0a0a0a] overflow-x-hidden">
+<main
+	class="min-h-screen overflow-x-hidden bg-[#100a12] font-['Outfit'] text-[#f1e6ee] selection:bg-[#ff4fd8] selection:text-[#100a12]"
+>
 	<!-- Background Effects -->
-	<div class="fixed inset-0 pointer-events-none opacity-20">
-		<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-		<div class="absolute inset-0 bg-gradient-to-br from-[#00f2ff10] via-transparent to-[#bfff0005]"></div>
+	<div class="pointer-events-none fixed inset-0 opacity-20">
+		<div
+			class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"
+		></div>
+		<div
+			class="absolute inset-0 bg-gradient-to-br from-[#ff4fd814] via-transparent to-[#ffb3470a]"
+		></div>
 	</div>
 
-	<div class="relative max-w-4xl mx-auto px-6 py-12 min-h-screen flex flex-col">
+	<div class="relative mx-auto flex min-h-screen max-w-4xl flex-col px-6 py-12">
 		<!-- Header -->
-		<header class="flex justify-between items-end mb-12 border-b border-[#ffffff15] pb-6"
-			class:hidden={currentStep !== 'intro'}>
+		<header
+			class="mb-12 flex items-end justify-between border-b border-[#ffffff15] pb-6"
+			class:hidden={currentStep !== 'intro'}
+		>
 			<div>
-				<h1 class="text-4xl md:text-6xl font-black tracking-tighter text-white uppercase italic leading-none">
-					The Carbon <span class="text-[#00f2ff]">Ledger</span>
+				<h1
+					class="text-4xl leading-none font-black tracking-tighter text-white uppercase italic md:text-6xl"
+				>
+					Alkene <span class="text-[#ff4fd8]">Reactions</span>
 				</h1>
-				<p class="text-xs font-['JetBrains_Mono'] uppercase tracking-[0.3em] text-[#888] mt-2">
-					System Status: <span class="text-[#00f2ff]">Active</span> // Module: Alkenes
+				<p class="mt-2 font-['JetBrains_Mono'] text-xs tracking-[0.3em] text-[#888] uppercase">
+					Reaction Mode: <span class="text-[#ff4fd8]">Active</span> // Module: Alkenes
 				</p>
 			</div>
-			<div class="hidden md:block text-right">
-				<p class="text-[10px] font-['JetBrains_Mono'] uppercase text-[#555]">Classification: Unsaturated</p>
-				<p class="text-[10px] font-['JetBrains_Mono'] uppercase text-[#555]">Subject: Double Bonds (C=C)</p>
+			<div class="hidden text-right md:block">
+				<p class="font-['JetBrains_Mono'] text-[10px] text-[#555] uppercase">
+					Classification: Unsaturated
+				</p>
+				<p class="font-['JetBrains_Mono'] text-[10px] text-[#555] uppercase">
+					Subject: Double Bonds (C=C)
+				</p>
 			</div>
 		</header>
 
 		{#if currentStep === 'intro'}
 			<section
 				in:fade={{ duration: 800 }}
-				class="flex-1 flex flex-col justify-center items-center text-center space-y-8"
+				class="flex flex-1 flex-col items-center justify-center space-y-8 text-center"
 			>
-				<div class="relative group">
-					<div class="absolute -inset-4 bg-[#00f2ff] opacity-20 blur-2xl group-hover:opacity-40 transition-opacity"></div>
-					<div class="relative bg-[#111] border-2 border-[#333] p-12 md:p-20 rounded-sm skew-x-[-2deg]">
-						<h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight">Ready for Calibration?</h2>
-						<p class="text-lg text-[#aaa] max-w-md mx-auto mb-10 leading-relaxed font-light">
-							Test your knowledge of <span class="text-white font-medium">Alkenes</span>, 
-							<span class="text-white font-medium">Geometric Isomerism</span>, 
-							and <span class="text-white font-medium">Electrophilic Addition</span> reactions.
+				<div class="group relative">
+					<div
+						class="absolute -inset-4 bg-[#ff4fd8] opacity-20 blur-2xl transition-opacity group-hover:opacity-40"
+					></div>
+					<div
+						class="relative skew-x-[-2deg] rounded-sm border-2 border-[#3b2635] bg-[#171018] p-12 md:p-20"
+					>
+						<h2 class="mb-6 text-3xl font-bold tracking-tight md:text-5xl">
+							Ready for Calibration?
+						</h2>
+						<p class="mx-auto mb-10 max-w-md text-lg leading-relaxed font-light text-[#aaa]">
+							Test your knowledge of <span class="font-medium text-white">Alkenes</span>,
+							<span class="font-medium text-white">Geometric Isomerism</span>, and
+							<span class="font-medium text-white">Electrophilic Addition</span> reactions.
 						</p>
 						<button
 							onclick={startQuiz}
-							class="group relative inline-flex items-center justify-center px-12 py-4 font-bold text-white transition-all duration-200 bg-[#00f2ff] hover:bg-[#00d8e4] focus:outline-none rounded-none skew-x-[2deg]"
+							class="group relative inline-flex skew-x-[2deg] items-center justify-center rounded-none bg-[#ff4fd8] px-12 py-4 font-bold text-[#100a12] transition-all duration-200 hover:bg-[#ff8be6] focus:outline-none"
 						>
-							<span class="relative uppercase tracking-widest text-sm">Initiate Assessment</span>
-							<div class="absolute -bottom-2 -right-2 w-full h-full border-2 border-[#ffffff20] -z-10 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform"></div>
+							<span class="relative text-sm tracking-widest uppercase">Initiate Assessment</span>
+							<div
+								class="absolute -right-2 -bottom-2 -z-10 h-full w-full border-2 border-[#ffffff20] transition-transform group-hover:translate-x-1 group-hover:translate-y-1"
+							></div>
 						</button>
 					</div>
 				</div>
-				<p class="text-[10px] font-['JetBrains_Mono'] text-[#444] uppercase tracking-widest">
+				<p class="font-['JetBrains_Mono'] text-[10px] tracking-widest text-[#444] uppercase">
 					Total Items: {shuffledQuestions.length} // Complexity: College-Level
 				</p>
 			</section>
 		{:else if currentStep === 'quiz'}
-			<section class="flex-1 flex flex-col">
+			<section class="flex flex-1 flex-col">
 				<!-- Progress bar -->
-				<div class="w-full bg-[#222] h-1 mb-6 relative overflow-hidden">
+				<div class="relative mb-6 h-1 w-full overflow-hidden bg-[#222]">
 					<div
-						class="absolute top-0 left-0 h-full bg-[#00f2ff] transition-all duration-500 ease-out"
+						class="absolute top-0 left-0 h-full bg-[#ff4fd8] transition-all duration-500 ease-out"
 						style="width: {progress}%"
 					>
-						<div class="absolute top-0 right-0 w-8 h-full bg-white blur-md opacity-50"></div>
+						<div class="absolute top-0 right-0 h-full w-8 bg-white opacity-50 blur-md"></div>
 					</div>
 				</div>
 
 				<!-- Navigation Controls -->
-				<div class="flex justify-between items-center mb-8">
+				<div class="mb-8 flex items-center justify-between">
 					<div class="flex gap-2">
 						<button
 							onclick={prevQuestion}
 							disabled={currentIndex === 0}
-							class="px-4 py-2 text-xs font-['JetBrains_Mono'] uppercase tracking-widest border border-[#333] text-[#888] hover:border-[#00f2ff] hover:text-[#00f2ff] transition-colors disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-[#333] disabled:hover:text-[#888]"
+							class="border border-[#3b2635] px-4 py-2 font-['JetBrains_Mono'] text-xs tracking-widest text-[#a98fa0] uppercase transition-colors hover:border-[#ff4fd8] hover:text-[#ff4fd8] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-[#3b2635] disabled:hover:text-[#a98fa0]"
 						>
 							{'<'} Previous
 						</button>
 						<button
 							onclick={refreshQuestion}
-							class="px-4 py-2 text-xs font-['JetBrains_Mono'] uppercase tracking-widest border border-[#333] text-[#888] hover:border-[#00f2ff] hover:text-[#00f2ff] transition-colors"
+							class="border border-[#3b2635] px-4 py-2 font-['JetBrains_Mono'] text-xs tracking-widest text-[#a98fa0] uppercase transition-colors hover:border-[#ff4fd8] hover:text-[#ff4fd8]"
 						>
 							Refresh
 						</button>
 					</div>
 					<button
 						onclick={resetQuiz}
-						class="px-4 py-2 text-xs font-['JetBrains_Mono'] uppercase tracking-widest border border-[#ff3e0060] text-[#ff3e00] hover:border-[#ff3e00] hover:bg-[#ff3e0010] transition-colors"
+						class="border border-[#ff3e0060] px-4 py-2 font-['JetBrains_Mono'] text-xs tracking-widest text-[#ff3e00] uppercase transition-colors hover:border-[#ff3e00] hover:bg-[#ff3e0010]"
 					>
 						Reset Quiz
 					</button>
@@ -205,23 +233,22 @@
 
 				<div class="flex-1">
 					{#key currentIndex}
-						<div
-							in:fly={{ y: 20, duration: 600, delay: 200, easing: cubicOut }}
-							class="space-y-8"
-						>
+						<div in:fly={{ y: 20, duration: 600, delay: 200, easing: cubicOut }} class="space-y-8">
 							<div class="flex items-baseline gap-4">
-								<span class="text-5xl font-black text-[#ffffff10] font-['JetBrains_Mono']">
+								<span class="font-['JetBrains_Mono'] text-5xl font-black text-[#ffffff10]">
 									{String(currentIndex + 1).padStart(2, '0')}
 								</span>
 								<div class="space-y-2">
-									<h3 class="text-2xl md:text-3xl font-bold leading-tight">
+									<h3 class="text-2xl leading-tight font-bold md:text-3xl">
 										{currentQuestion.question}
 									</h3>
 									{#if currentQuestion.difficulty}
-										<span class="inline-block text-[10px] font-['JetBrains_Mono'] uppercase tracking-widest px-2 py-1 rounded
-											{currentQuestion.difficulty === 'intermediate' ? 'bg-[#00f2ff20] text-[#00f2ff]' : ''}
+										<span
+											class="inline-block rounded px-2 py-1 font-['JetBrains_Mono'] text-[10px] tracking-widest uppercase
+											{currentQuestion.difficulty === 'intermediate' ? 'bg-[#ff4fd820] text-[#ff4fd8]' : ''}
 											{currentQuestion.difficulty === 'advanced' ? 'bg-[#ff990020] text-[#ff9900]' : ''}
-											{currentQuestion.difficulty === 'expert' ? 'bg-[#ff3e0020] text-[#ff3e00]' : ''}">
+											{currentQuestion.difficulty === 'expert' ? 'bg-[#ff3e0020] text-[#ff3e00]' : ''}"
+										>
 											{currentQuestion.difficulty}
 										</span>
 									{/if}
@@ -229,26 +256,41 @@
 							</div>
 
 							{#if currentQuestion.structureIllustration || currentQuestion.reactionScheme}
-								<div class="mt-4 p-4 bg-[#111] border border-[#333] rounded-sm">
+								<div class="mt-4 rounded-sm border border-[#333] bg-[#111] p-4">
 									{@html currentQuestion.structureIllustration || currentQuestion.reactionScheme}
 								</div>
 							{/if}
 
-							<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+							<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 								{#each currentQuestion.options as option (option)}
 									<button
 										onclick={() => handleAnswer(option)}
 										disabled={isAnswered}
-										class="group relative text-left p-6 transition-all duration-200 border-2 rounded-none flex items-center justify-between
-											{isAnswered && option === currentQuestion.answer ? 'bg-[#bfff00] border-[#bfff00] text-black' : ''}
-											{isAnswered && option === selectedAnswer && option !== currentQuestion.answer ? 'bg-[#ff3e00] border-[#ff3e00] text-white' : ''}
-											{!isAnswered ? 'bg-[#111] border-[#333] hover:border-[#00f2ff] hover:translate-y-[-2px]' : ''}
-											{isAnswered && option !== currentQuestion.answer && option !== selectedAnswer ? 'bg-[#111] border-[#222] opacity-40' : ''}"
+										class="group relative flex items-center justify-between rounded-none border-2 p-6 text-left transition-all duration-200
+											{isAnswered && option === currentQuestion.answer ? 'border-[#bfff00] bg-[#bfff00] text-black' : ''}
+											{isAnswered && option === selectedAnswer && option !== currentQuestion.answer
+											? 'border-[#ff3e00] bg-[#ff3e00] text-white'
+											: ''}
+											{!isAnswered ? 'border-[#3b2635] bg-[#171018] hover:translate-y-[-2px] hover:border-[#ff4fd8]' : ''}
+											{isAnswered && option !== currentQuestion.answer && option !== selectedAnswer
+											? 'border-[#222] bg-[#111] opacity-40'
+											: ''}"
 									>
 										<span class="text-lg font-medium tracking-tight uppercase">{option}</span>
 										{#if isAnswered && option === currentQuestion.answer}
-											<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												class="h-6 w-6"
+												fill="none"
+												viewBox="0 0 24 24"
+												stroke="currentColor"
+											>
+												<path
+													stroke-linecap="round"
+													stroke-linejoin="round"
+													stroke-width="3"
+													d="M5 13l4 4L19 7"
+												/>
 											</svg>
 										{/if}
 									</button>
@@ -262,90 +304,111 @@
 				{#if showExplanation}
 					<div
 						in:slide={{ duration: 400, easing: cubicOut }}
-						class="mt-12 p-8 bg-[#1a1a1a] border-l-4 border-[#00f2ff] relative overflow-hidden"
+						class="relative mt-12 overflow-hidden border-l-4 border-[#ff4fd8] bg-[#171018] p-8"
 					>
 						<div class="absolute top-0 right-0 p-2 opacity-5">
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-24 w-24"
+								fill="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path
+									d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+								/>
 							</svg>
 						</div>
-						<h4 class="text-xs font-['JetBrains_Mono'] uppercase tracking-widest text-[#00f2ff] mb-2">Technical Analysis</h4>
-						<p class="text-[#ccc] text-lg font-light leading-relaxed">
+						<h4
+							class="mb-2 font-['JetBrains_Mono'] text-xs tracking-widest text-[#ff4fd8] uppercase"
+						>
+							Reaction Note
+						</h4>
+						<p class="text-lg leading-relaxed font-light text-[#ccc]">
 							{currentQuestion.explanation}
 						</p>
-					<div class="mt-8 flex justify-between items-center">
-						<div class="flex gap-2">
+						<div class="mt-8 flex items-center justify-between">
+							<div class="flex gap-2">
+								<button
+									onclick={prevQuestion}
+									disabled={currentIndex === 0}
+									class="border border-[#3b2635] px-6 py-3 text-sm font-black tracking-widest text-[#a98fa0] uppercase transition-colors hover:border-[#ff4fd8] hover:text-[#ff4fd8] disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:border-[#3b2635] disabled:hover:text-[#a98fa0]"
+								>
+									{'<'} Previous
+								</button>
+								<button
+									onclick={refreshQuestion}
+									class="border border-[#3b2635] px-6 py-3 text-sm font-black tracking-widest text-[#a98fa0] uppercase transition-colors hover:border-[#ff4fd8] hover:text-[#ff4fd8]"
+								>
+									Refresh
+								</button>
+							</div>
 							<button
-								onclick={prevQuestion}
-								disabled={currentIndex === 0}
-								class="px-6 py-3 border border-[#333] text-[#888] font-black uppercase tracking-widest text-sm hover:border-[#00f2ff] hover:text-[#00f2ff] transition-colors disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-[#333] disabled:hover:text-[#888]"
+								onclick={nextQuestion}
+								class="bg-white px-8 py-3 text-sm font-black tracking-widest text-black uppercase transition-colors hover:bg-[#ff4fd8]"
 							>
-								{'<'} Previous
-							</button>
-							<button
-								onclick={refreshQuestion}
-								class="px-6 py-3 border border-[#333] text-[#888] font-black uppercase tracking-widest text-sm hover:border-[#00f2ff] hover:text-[#00f2ff] transition-colors"
-							>
-								Refresh
+								{currentIndex < shuffledQuestions.length - 1 ? 'Continue >' : 'Finish >'}
 							</button>
 						</div>
-						<button
-							onclick={nextQuestion}
-							class="px-8 py-3 bg-white text-black font-black uppercase tracking-widest text-sm hover:bg-[#00f2ff] transition-colors"
-						>
-							{currentIndex < shuffledQuestions.length - 1 ? 'Continue >' : 'Finish >'}
-						</button>
-					</div>
 					</div>
 				{/if}
 			</section>
 		{:else if currentStep === 'results'}
 			<section
 				in:fly={{ y: 40, duration: 1000, easing: backOut }}
-				class="flex-1 flex flex-col justify-center items-center"
+				class="flex flex-1 flex-col items-center justify-center"
 			>
-				<div class="w-full max-w-2xl bg-[#111] border-2 border-[#333] p-12 text-center relative overflow-hidden">
-					<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#00f2ff] to-[#bfff00]"></div>
-					
-					<h2 class="text-xs font-['JetBrains_Mono'] uppercase tracking-[0.5em] text-[#888] mb-8">Assessment Complete</h2>
-					
+				<div
+					class="relative w-full max-w-2xl overflow-hidden border-2 border-[#333] bg-[#111] p-12 text-center"
+				>
+					<div
+						class="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-[#ff4fd8] to-[#ffb347]"
+					></div>
+
+					<h2 class="mb-8 font-['JetBrains_Mono'] text-xs tracking-[0.5em] text-[#888] uppercase">
+						Assessment Complete
+					</h2>
+
 					<div class="mb-12">
-						<div class="text-[120px] font-black leading-none text-white tracking-tighter mb-2">
-							{Math.round((score / shuffledQuestions.length) * 100)}<span class="text-3xl text-[#00f2ff]">%</span>
+						<div class="mb-2 text-[120px] leading-none font-black tracking-tighter text-white">
+							{Math.round((score / shuffledQuestions.length) * 100)}<span
+								class="text-3xl text-[#ff4fd8]">%</span
+							>
 						</div>
-						<p class="text-[#666] uppercase tracking-widest font-['JetBrains_Mono'] text-sm">Final Proficiency Score</p>
+						<p class="font-['JetBrains_Mono'] text-sm tracking-widest text-[#666] uppercase">
+							Final Proficiency Score
+						</p>
 					</div>
 
-					<div class="grid grid-cols-2 gap-4 mb-12 border-y border-[#ffffff10] py-8">
+					<div class="mb-12 grid grid-cols-2 gap-4 border-y border-[#ffffff10] py-8">
 						<div>
 							<p class="text-2xl font-bold text-white">{score} / {shuffledQuestions.length}</p>
-							<p class="text-[10px] uppercase tracking-widest text-[#555]">Correct Entries</p>
+							<p class="text-[10px] tracking-widest text-[#555] uppercase">Correct Entries</p>
 						</div>
 						<div>
 							<p class="text-2xl font-bold text-white">{timeTaken}s</p>
-							<p class="text-[10px] uppercase tracking-widest text-[#555]">Duration</p>
+							<p class="text-[10px] tracking-widest text-[#555] uppercase">Duration</p>
 						</div>
 					</div>
 
 					<div class="space-y-4">
 						<button
 							onclick={startQuiz}
-							class="w-full py-4 bg-[#00f2ff] text-black font-black uppercase tracking-widest hover:bg-white transition-colors"
+							class="w-full bg-[#ff4fd8] py-4 font-black tracking-widest text-black uppercase transition-colors hover:bg-white"
 						>
 							Recalibrate (Restart)
 						</button>
 						<button
 							onclick={restart}
-							class="w-full py-4 bg-transparent border-2 border-[#333] text-white font-black uppercase tracking-widest hover:border-[#00f2ff] transition-colors"
+							class="w-full border-2 border-[#333] bg-transparent py-4 font-black tracking-widest text-white uppercase transition-colors hover:border-[#ff4fd8]"
 						>
 							Return to Terminal
 						</button>
 					</div>
 				</div>
-				
+
 				<footer class="mt-12 text-center opacity-30">
-					<p class="text-[10px] font-['JetBrains_Mono'] uppercase tracking-widest">
-						Certified by the carbon ledger protocol // 2026.05.17
+					<p class="font-['JetBrains_Mono'] text-[10px] tracking-widest uppercase">
+						Organic chemistry practice module // Alkenes
 					</p>
 				</footer>
 			</section>
@@ -357,7 +420,7 @@
 	:global(body) {
 		margin: 0;
 		padding: 0;
-		background: #0a0a0a;
+		background: #100a12;
 	}
 
 	button {
@@ -369,14 +432,14 @@
 		width: 8px;
 	}
 	::-webkit-scrollbar-track {
-		background: #0a0a0a;
+		background: #100a12;
 	}
 	::-webkit-scrollbar-thumb {
 		background: #333;
 		border-radius: 0;
 	}
 	::-webkit-scrollbar-thumb:hover {
-		background: #00f2ff;
+		background: #ff4fd8;
 	}
 	.hidden {
 		display: none;

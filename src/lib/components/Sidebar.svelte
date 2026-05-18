@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
+
 	let isOpen = $state(false);
 
 	const quizTopics = [
@@ -22,8 +24,15 @@
 			description: 'Triple bonds, conjugation, and reactions',
 			href: '/alkynes-dienes',
 			icon: '🔗'
+		},
+		{
+			id: 'animal-diversity',
+			title: 'Animal Diversity',
+			description: 'Phyla, body plans, and chordate concepts',
+			href: '/animal-diversity',
+			icon: 'AD'
 		}
-	];
+	] as const;
 
 	function toggle() {
 		isOpen = !isOpen;
@@ -36,7 +45,7 @@
 
 <!-- Mobile hamburger button -->
 <button
-	class="lg:hidden fixed top-4 left-4 z-50 p-2 bg-[#111] border-2 border-[#333] text-white"
+	class="fixed top-4 left-4 z-50 border-2 border-[#333] bg-[#111] p-2 text-white lg:hidden"
 	onclick={toggle}
 >
 	{#if isOpen}
@@ -48,21 +57,26 @@
 
 <!-- Overlay -->
 {#if isOpen}
-	<div class="lg:hidden fixed inset-0 bg-black/50 z-30" onclick={close}></div>
+	<button
+		type="button"
+		aria-label="Close sidebar"
+		class="fixed inset-0 z-30 bg-black/50 lg:hidden"
+		onclick={close}
+	></button>
 {/if}
 
 <aside
-	class="fixed top-0 left-0 h-full w-72 bg-[#0a0a0a] border-r-2 border-[#ffffff15] z-40 flex flex-col p-6
+	class="fixed top-0 left-0 z-40 flex h-full w-72 flex-col border-r-2 border-[#ffffff15] bg-[#0a0a0a] p-6
 		lg:translate-x-0
 		{isOpen ? 'translate-x-0' : '-translate-x-full'}
 		transition-transform duration-300"
 >
 	<!-- Header -->
-	<div class="mb-8 pb-6 border-b border-[#ffffff15]">
+	<div class="mb-8 border-b border-[#ffffff15] pb-6">
 		<h2 class="text-2xl font-black tracking-tighter text-white uppercase italic">
 			Quiz <span class="text-[#00f2ff]">Topics</span>
 		</h2>
-		<p class="text-[10px] font-['JetBrains_Mono'] uppercase tracking-[0.2em] text-[#555] mt-2">
+		<p class="mt-2 font-['JetBrains_Mono'] text-[10px] tracking-[0.2em] text-[#555] uppercase">
 			Select Module
 		</p>
 	</div>
@@ -71,17 +85,19 @@
 	<nav class="flex-1 space-y-3 overflow-y-auto">
 		{#each quizTopics as topic (topic.id)}
 			<a
-				href={topic.href}
-				class="group block p-4 bg-[#111] border-2 border-[#333] hover:border-[#00f2ff] hover:translate-x-1 transition-all duration-200"
+				href={resolve(topic.href)}
+				class="group block border-2 border-[#333] bg-[#111] p-4 transition-all duration-200 hover:translate-x-1 hover:border-[#00f2ff]"
 				onclick={close}
 			>
 				<div class="flex items-start gap-3">
 					<span class="text-2xl">{topic.icon}</span>
 					<div class="flex-1">
-						<h3 class="text-sm font-bold text-white group-hover:text-[#00f2ff] transition-colors uppercase tracking-tight">
+						<h3
+							class="text-sm font-bold tracking-tight text-white uppercase transition-colors group-hover:text-[#00f2ff]"
+						>
 							{topic.title}
 						</h3>
-						<p class="text-xs text-[#888] mt-1 leading-relaxed">
+						<p class="mt-1 text-xs leading-relaxed text-[#888]">
 							{topic.description}
 						</p>
 					</div>
@@ -91,8 +107,8 @@
 	</nav>
 
 	<!-- Footer -->
-	<div class="mt-6 pt-6 border-t border-[#ffffff15]">
-		<p class="text-[8px] font-['JetBrains_Mono'] text-[#444] uppercase tracking-widest text-center">
+	<div class="mt-6 border-t border-[#ffffff15] pt-6">
+		<p class="text-center font-['JetBrains_Mono'] text-[8px] tracking-widest text-[#444] uppercase">
 			Carbon Ledger v2.0
 		</p>
 	</div>

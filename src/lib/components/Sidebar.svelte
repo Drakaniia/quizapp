@@ -33,6 +33,13 @@
 			icon: 'AD'
 		},
 		{
+			id: 'plant-diversity',
+			title: 'Plant Diversity',
+			description: 'Bryophytes, seed plants, and angiosperms',
+			href: '/plant-diversity',
+			icon: 'PD'
+		},
+		{
 			id: 'systematics',
 			title: 'Systematics Tools',
 			description: 'Morphology, DNA, barcoding, and NGS',

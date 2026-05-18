@@ -31,6 +31,13 @@
 			description: 'Phyla, body plans, and chordate concepts',
 			href: '/animal-diversity',
 			icon: 'AD'
+		},
+		{
+			id: 'systematics',
+			title: 'Systematics Tools',
+			description: 'Morphology, DNA, barcoding, and NGS',
+			href: '/systematics',
+			icon: 'ST'
 		}
 	] as const;
 

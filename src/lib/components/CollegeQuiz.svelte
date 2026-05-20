@@ -195,7 +195,7 @@
 					<h2>{introTitle}</h2>
 					<p class="intro-copy">{introText}</p>
 					<button class="primary-action" onclick={startQuiz}>
-						<span>Start 20-Item Quiz</span>
+						<span>Start {quizData.length}-Item Quiz</span>
 					</button>
 				</div>
 				<p class="module-count">Total Items: {quizData.length} // Mode: College Analysis</p>

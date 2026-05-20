@@ -33,6 +33,55 @@
 			icon: 'AD'
 		},
 		{
+			id: 'molecular-structure-dna',
+			title: 'DNA Structure',
+			description: 'Watson-Crick model, base pairing, and packing',
+			href: '/molecular-structure-dna',
+			icon: 'D1'
+		},
+		{
+			id: 'dna-replication',
+			title: 'DNA Replication',
+			description: 'Replication models, fork enzymes, and repair',
+			href: '/dna-replication',
+			icon: 'D2'
+		},
+		{
+			id: 'gene-functions',
+			title: 'Gene Functions',
+			description: 'Gene-enzyme logic, transcription, and translation',
+			href: '/gene-functions',
+			icon: 'G3'
+		},
+		{
+			id: 'gene-regulation',
+			title: 'Gene Regulation',
+			description: 'Genetic code, operons, and developmental control',
+			href: '/gene-regulation',
+			icon: 'G4'
+		},
+		{
+			id: 'mutations',
+			title: 'Mutations',
+			description: 'Chromosome changes, point mutations, and transposons',
+			href: '/mutations',
+			icon: 'M5'
+		},
+		{
+			id: 'quantitative-genetics',
+			title: 'Quantitative Genetics',
+			description: 'Polygenes, variance, regression, and heritability',
+			href: '/quantitative-genetics',
+			icon: 'Q6'
+		},
+		{
+			id: 'population-genetics',
+			title: 'Population Genetics',
+			description: 'Hardy-Weinberg, selection, drift, and speciation',
+			href: '/population-genetics',
+			icon: 'P7'
+		},
+		{
 			id: 'plant-diversity',
 			title: 'Plant Diversity',
 			description: 'Bryophytes, seed plants, and angiosperms',

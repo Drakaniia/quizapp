@@ -22,7 +22,9 @@ Thumbs.db
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .opencode/plugins/emdash-notifications.js
-.codex/config.toml
+.codex/
 
 # Lecture PDFs
-/files
+# /files
+
+tmp/

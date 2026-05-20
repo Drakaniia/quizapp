@@ -199,7 +199,7 @@
 					</div>
 				</div>
 				<p class="font-['JetBrains_Mono'] text-[10px] tracking-widest text-[#90966c] uppercase">
-					Total Items: {plantDiversityQuizData.length} // Mode: Applied Botany
+					Total Items: {plantDiversityQuizData.length} // Mode: Expert Botany
 				</p>
 			</section>
 		{:else if currentStep === 'quiz'}
@@ -251,8 +251,6 @@
 									{#if currentQuestion.difficulty}
 										<span
 											class="inline-block rounded px-2 py-1 font-['JetBrains_Mono'] text-[10px] tracking-widest uppercase
-											{currentQuestion.difficulty === 'intermediate' ? 'bg-[#d7ea5820] text-[#d7ea58]' : ''}
-											{currentQuestion.difficulty === 'advanced' ? 'bg-[#66c08f20] text-[#66c08f]' : ''}
 											{currentQuestion.difficulty === 'expert' ? 'bg-[#e08d6420] text-[#e08d64]' : ''}"
 										>
 											{currentQuestion.difficulty}
@@ -260,6 +258,14 @@
 									{/if}
 								</div>
 							</div>
+
+							{#if currentQuestion.illustration}
+								<div
+									class="plant-diversity-illustration overflow-hidden border border-[#4f5b2d] bg-[#18190f] p-3"
+								>
+									{@html currentQuestion.illustration}
+								</div>
+							{/if}
 
 							<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 								{#each currentQuestion.options as option (option)}
@@ -422,6 +428,12 @@
 
 	button {
 		cursor: pointer;
+	}
+
+	:global(.plant-diversity-illustration svg) {
+		display: block;
+		width: 100%;
+		height: auto;
 	}
 
 	::-webkit-scrollbar {

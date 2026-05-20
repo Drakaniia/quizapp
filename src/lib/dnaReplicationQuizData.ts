@@ -60,7 +60,13 @@ const repairIllustration = `
 	</g>
 </svg>`;
 
-export const dnaReplicationQuizData: Question[] = [
+function dnaReplicationIllustrationFor(id: number) {
+	if (id <= 4 || id === 16 || id === 17) return replicationModelsIllustration;
+	if ((id >= 10 && id <= 14) || id === 18 || id === 19) return repairIllustration;
+	return replisomeIllustration;
+}
+
+const dnaReplicationQuizItems: Question[] = [
 	{
 		id: 1,
 		question:
@@ -74,7 +80,7 @@ export const dnaReplicationQuizData: Question[] = [
 		answer: 'Conservative replication preserves parental duplex.',
 		explanation:
 			'The lecture defines conservative replication as preserving the parental molecules while daughter molecules are composed wholly of new material.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: replicationModelsIllustration
 	},
 	{
@@ -90,7 +96,7 @@ export const dnaReplicationQuizData: Question[] = [
 		answer: 'Semi-conservative replication of DNA.',
 		explanation:
 			'The lecture states that Meselson and Stahl proved DNA replication is semi-conservative, producing molecules with one conserved parental strand and one new complementary strand.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: replicationModelsIllustration
 	},
 	{
@@ -106,7 +112,7 @@ export const dnaReplicationQuizData: Question[] = [
 		answer: 'It separated DNA according to density.',
 		explanation:
 			'The slide identifies an ultracentrifuge as the instrument used to determine DNA density, allowing old and new strand distributions to be inferred.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 4,
@@ -121,7 +127,7 @@ export const dnaReplicationQuizData: Question[] = [
 		answer: 'Deoxyribonucleotide triphosphate substrates.',
 		explanation:
 			'The lecture lists dATP, dGTP, dTTP, and dCTP as deoxyribonucleotide triphosphate substrates required for replication.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 5,
@@ -136,7 +142,7 @@ export const dnaReplicationQuizData: Question[] = [
 		answer: 'DNA helicase is defective.',
 		explanation:
 			'DNA helicase is described as the helix-unwinding protein that separates parental strands to create two templates.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: replisomeIllustration
 	},
 	{
@@ -152,7 +158,7 @@ export const dnaReplicationQuizData: Question[] = [
 		answer: 'Single-strand DNA binding protein.',
 		explanation:
 			'SSBP prevents separated strands from reannealing, keeping templates accessible after helicase opens the duplex.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: replisomeIllustration
 	},
 	{
@@ -183,7 +189,7 @@ export const dnaReplicationQuizData: Question[] = [
 		answer: 'DNA polymerase III catalyzes daughter synthesis.',
 		explanation:
 			'DNA polymerase III, also called DNA replicase in the slide, catalyzes synthesis of daughter DNA.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: replisomeIllustration
 	},
 	{
@@ -199,7 +205,7 @@ export const dnaReplicationQuizData: Question[] = [
 		answer: 'Primase RNA-primer synthesis is missing.',
 		explanation:
 			'Primase initiates synthesis of RNA primer strands, described as varying from 10 to 60 nucleotides.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 10,
@@ -230,7 +236,7 @@ export const dnaReplicationQuizData: Question[] = [
 		answer: 'DNA ligase forms the phosphodiester bond.',
 		explanation:
 			'DNA ligase is described as the joining enzyme that catalyzes phosphodiester bond formation between adjacent nucleotides.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: replisomeIllustration
 	},
 	{
@@ -291,7 +297,7 @@ export const dnaReplicationQuizData: Question[] = [
 		answer: 'Holoenzyme DNA Pol III plus primosome.',
 		explanation:
 			'The replisome slide defines the complete replication apparatus as holoenzyme DNA Pol III plus the primosome, which contains helicase and primase.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: replisomeIllustration
 	},
 	{
@@ -307,7 +313,7 @@ export const dnaReplicationQuizData: Question[] = [
 		answer: 'Replication bubbles form during linear replication.',
 		explanation:
 			'The conformation slide describes linear DNA replication as bidirectional with formation of replication bubbles.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 17,
@@ -320,7 +326,7 @@ export const dnaReplicationQuizData: Question[] = [
 		],
 		answer: 'Theta and rolling-circle conformations.',
 		explanation: 'The circular DNA slide lists theta and rolling-circle conformations.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 18,
@@ -350,7 +356,7 @@ export const dnaReplicationQuizData: Question[] = [
 		answer: 'Thymine dimers and N-glycosidase repair.',
 		explanation:
 			'The error-correction slide lists proofreading and repair mechanisms, including repair of T dimers and N-glycosidase activity.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: repairIllustration
 	},
 	{
@@ -369,3 +375,9 @@ export const dnaReplicationQuizData: Question[] = [
 		illustration: replisomeIllustration
 	}
 ];
+
+export const dnaReplicationQuizData = dnaReplicationQuizItems.map((question) => ({
+	...question,
+	difficulty: 'expert' as const,
+	illustration: question.illustration ?? dnaReplicationIllustrationFor(question.id)
+})) satisfies Question[];

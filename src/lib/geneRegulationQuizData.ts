@@ -60,7 +60,14 @@ const developmentIllustration = `
 	<text x="600" y="132" fill="#fbf2e8" font-family="monospace" font-size="14">fate fixed</text>
 </svg>`;
 
-export const geneRegulationQuizData: Question[] = [
+function geneRegulationIllustrationFor(id: number) {
+	if (id <= 6) return tripletCodeIllustration;
+	if (id <= 13) return operonIllustration;
+	if (id <= 17 || id === 20) return chromatinIllustration;
+	return developmentIllustration;
+}
+
+const geneRegulationQuizItems: Question[] = [
 	{
 		id: 1,
 		question:
@@ -74,7 +81,7 @@ export const geneRegulationQuizData: Question[] = [
 		answer: 'Three bases create 64 possible codons.',
 		explanation:
 			'The lecture explains that 4^1 gives 4 and 4^2 gives 16, both insufficient for 20 amino acids, while 4^3 gives 64 possible codons.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: tripletCodeIllustration
 	},
 	{
@@ -90,7 +97,7 @@ export const geneRegulationQuizData: Question[] = [
 		answer: 'Poly-U directed poly-phenylalanine synthesis.',
 		explanation:
 			'The codon slide says Nirenberg and Matthaei used synthetic poly-U RNA and obtained poly-Phe, a major step in cracking the genetic code.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 3,
@@ -105,7 +112,7 @@ export const geneRegulationQuizData: Question[] = [
 		answer: 'Codons are three-base message units.',
 		explanation:
 			'The lecture credits Khorana with proving that the nucleotide code is transmitted in groups of three called codons, some of which start or stop protein synthesis.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: tripletCodeIllustration
 	},
 	{
@@ -121,7 +128,7 @@ export const geneRegulationQuizData: Question[] = [
 		answer: 'Comma-free and non-overlapping reading.',
 		explanation:
 			'The lecture defines comma-free as reading three bases at a time without skipping bases, and non-overlapping as each nucleotide being part of only one codon.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 5,
@@ -136,7 +143,7 @@ export const geneRegulationQuizData: Question[] = [
 		answer: 'Many amino acids have multiple codons.',
 		explanation:
 			'The code is degenerate because an amino acid may be encoded by more than one codon, but each codon still has one amino acid meaning.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 6,
@@ -151,7 +158,7 @@ export const geneRegulationQuizData: Question[] = [
 		answer: 'The wobble hypothesis explains degeneracy.',
 		explanation:
 			'The lecture states that Crick explained degeneracy with the wobble hypothesis: the first two positions pair precisely, while third-position pairing may wobble.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 7,
@@ -179,7 +186,7 @@ export const geneRegulationQuizData: Question[] = [
 		answer: 'AUG starts; UAA, UAG, and UGA stop.',
 		explanation:
 			'The lecture states that AUG is the start signal defining the open reading frame, while UAA, UAG, and UGA are stop codons with no corresponding tRNA.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 9,
@@ -194,7 +201,7 @@ export const geneRegulationQuizData: Question[] = [
 		answer: 'An operon coordinates grouped genes.',
 		explanation:
 			'The operon slide defines an operon as grouped genes transcribed into a single polycistronic mRNA from one promoter for coordinated metabolic control.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: operonIllustration
 	},
 	{
@@ -210,7 +217,7 @@ export const geneRegulationQuizData: Question[] = [
 		answer: 'The lac operon turns on.',
 		explanation:
 			'The lac operon is inducible: allolactose inactivates the repressor so it cannot bind the operator, turning gene expression on.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: operonIllustration
 	},
 	{
@@ -226,7 +233,7 @@ export const geneRegulationQuizData: Question[] = [
 		answer: 'The trp operon is turned off.',
 		explanation:
 			'The trp operon is repressible and usually on until tryptophan activates the repressor, which turns expression off.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: operonIllustration
 	},
 	{
@@ -273,7 +280,7 @@ export const geneRegulationQuizData: Question[] = [
 		answer: 'External signals can switch transcription.',
 		explanation:
 			'The eukaryotic regulation slide states that neurotransmitters or hormones interact with transcription factors to activate or inactivate transcription.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 15,
@@ -288,7 +295,7 @@ export const geneRegulationQuizData: Question[] = [
 		answer: 'Determination restricts developmental potency.',
 		explanation:
 			'The developmental genetics slides define cell fate and potency, then state that determination involves progressive restriction in developmental potentials.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: developmentIllustration
 	},
 	{
@@ -335,7 +342,7 @@ export const geneRegulationQuizData: Question[] = [
 		answer: 'Heterochromatin is condensed; euchromatin is decondensed.',
 		explanation:
 			'The chromatin slide labels heterochromatin as condensed and euchromatin as decondensed, with euchromatin more easily transcribed.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: chromatinIllustration
 	},
 	{
@@ -366,6 +373,12 @@ export const geneRegulationQuizData: Question[] = [
 		answer: 'Translational control through mRNA half-life.',
 		explanation:
 			'The translational control slide states that longer mRNA half-life allows longer use during translation, and a longer poly A tail lets mRNA exist longer.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	}
 ];
+
+export const geneRegulationQuizData = geneRegulationQuizItems.map((question) => ({
+	...question,
+	difficulty: 'expert' as const,
+	illustration: question.illustration ?? geneRegulationIllustrationFor(question.id)
+})) satisfies Question[];

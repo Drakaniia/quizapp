@@ -4,12 +4,59 @@ export interface Question {
 	options: string[];
 	answer: string;
 	explanation: string;
-	difficulty?: 'intermediate' | 'advanced' | 'expert';
+	difficulty: 'expert';
+	illustration?: string;
 	structureIllustration?: string;
 	reactionScheme?: string;
 }
 
-export const animalDiversityQuizData: Question[] = [
+const earlyAnimalIllustration = `
+<svg role="img" aria-label="Early animal body plans" viewBox="0 0 760 250" xmlns="http://www.w3.org/2000/svg">
+	<rect width="760" height="250" rx="8" fill="#07100d"/>
+	<text x="34" y="40" fill="#9be15d" font-family="monospace" font-size="18" font-weight="700">BODY PLAN DECISION POINTS</text>
+	<g font-family="monospace" font-size="14" fill="#e7eee8">
+		<rect x="54" y="78" width="190" height="122" rx="6" fill="#0d1915" stroke="#9be15d"/>
+		<text x="86" y="110">Porifera</text><text x="86" y="140">pores + spongocoel</text><text x="86" y="170">choanocytes</text>
+		<rect x="286" y="78" width="190" height="122" rx="6" fill="#0d1915" stroke="#00c2a8"/>
+		<text x="318" y="110">Cnidaria</text><text x="318" y="140">polyp / medusa</text><text x="318" y="170">cnidocyte</text>
+		<rect x="518" y="78" width="190" height="122" rx="6" fill="#0d1915" stroke="#ffb84d"/>
+		<text x="550" y="110">Bilateria</text><text x="550" y="140">centralized organs</text><text x="550" y="170">directed movement</text>
+	</g>
+</svg>`;
+
+const protostomeIllustration = `
+<svg role="img" aria-label="Protostome comparison matrix" viewBox="0 0 760 270" xmlns="http://www.w3.org/2000/svg">
+	<rect width="760" height="270" rx="8" fill="#07100d"/>
+	<text x="34" y="40" fill="#9be15d" font-family="monospace" font-size="18" font-weight="700">PROTOSTOME CHARACTER MATRIX</text>
+	<g font-family="monospace" font-size="14" fill="#e7eee8">
+		<rect x="46" y="76" width="150" height="132" rx="6" fill="#0d1915" stroke="#00c2a8"/><text x="72" y="110">flatworm</text><text x="72" y="140">no gut or simple gut</text><text x="72" y="170">nerve cords</text>
+		<rect x="218" y="76" width="150" height="132" rx="6" fill="#0d1915" stroke="#9be15d"/><text x="244" y="110">mollusc</text><text x="244" y="140">foot + mantle</text><text x="244" y="170">visceral mass</text>
+		<rect x="390" y="76" width="150" height="132" rx="6" fill="#0d1915" stroke="#ffb84d"/><text x="416" y="110">annelid</text><text x="416" y="140">segmented rings</text><text x="416" y="170">class clues</text>
+		<rect x="562" y="76" width="150" height="132" rx="6" fill="#0d1915" stroke="#d9f99d"/><text x="588" y="110">nematode</text><text x="588" y="140">complete canal</text><text x="588" y="170">no circulation</text>
+	</g>
+</svg>`;
+
+const arthropodDeuterostomeIllustration = `
+<svg role="img" aria-label="Arthropod and deuterostome diagnostic traits" viewBox="0 0 760 250" xmlns="http://www.w3.org/2000/svg">
+	<rect width="760" height="250" rx="8" fill="#07100d"/>
+	<text x="34" y="40" fill="#9be15d" font-family="monospace" font-size="18" font-weight="700">DIAGNOSTIC TRAIT CHECK</text>
+	<g font-family="monospace" font-size="14" fill="#e7eee8">
+		<rect x="64" y="82" width="180" height="112" rx="6" fill="#0d1915" stroke="#9be15d"/>
+		<text x="94" y="116">arthropod</text><text x="94" y="146">jointed appendages</text><text x="94" y="174">exoskeleton</text>
+		<rect x="292" y="82" width="180" height="112" rx="6" fill="#0d1915" stroke="#00c2a8"/>
+		<text x="322" y="116">echinoderm</text><text x="322" y="146">water vascular</text><text x="322" y="174">tube feet</text>
+		<rect x="520" y="82" width="180" height="112" rx="6" fill="#0d1915" stroke="#ffb84d"/>
+		<text x="550" y="116">chordate</text><text x="550" y="146">notochord</text><text x="550" y="174">dorsal nerve cord</text>
+	</g>
+</svg>`;
+
+function animalIllustrationFor(id: number) {
+	if (id <= 7) return earlyAnimalIllustration;
+	if (id <= 18) return protostomeIllustration;
+	return arthropodDeuterostomeIllustration;
+}
+
+const animalDiversityQuizItems: Question[] = [
 	{
 		id: 1,
 		question:
@@ -23,7 +70,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'The animal is most likely a sponge.',
 		explanation:
 			'Sponges move water through pores into the spongocoel and out through the osculum. Calcarea and Silicea are sponge groups in the lecture.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 2,
@@ -38,7 +85,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'Water passes through the spongocoel chamber.',
 		explanation:
 			'The spongocoel is the central cavity of a sponge. Water flows through it before exiting through the osculum.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 3,
@@ -53,7 +100,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'The observed cells are choanocyte cells.',
 		explanation:
 			'Choanocytes use a flagellum and collar to keep water moving and trap food particles in mucus.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 4,
@@ -68,7 +115,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'They are polyp and medusa forms.',
 		explanation:
 			'Cnidarians can occur as sessile polyps or free-swimming medusae, both with tentacles and a gastrovascular cavity.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 5,
@@ -83,7 +130,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'A nematocyst thread fired from it.',
 		explanation:
 			'A cnidocyte contains a nematocyst. When triggered, the thread discharges and helps capture prey.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 6,
@@ -98,7 +145,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'The animal belongs in phylum Platyhelminthes.',
 		explanation:
 			'The lecture identifies members of phylum Platyhelminthes as flatworms found in marine, freshwater, and damp terrestrial habitats.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 7,
@@ -113,7 +160,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'It has eyespots and nerve cords.',
 		explanation:
 			'Planarians have light-sensitive eyespots and centralized nerve cords, making their nervous system more centralized than cnidarian nerve nets.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 8,
@@ -128,7 +175,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'The parasite is probably a tapeworm.',
 		explanation:
 			'Tapeworms are vertebrate parasites that lack a digestive system and absorb nutrients from the host intestine.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 9,
@@ -143,7 +190,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'It is most likely a rotifer.',
 		explanation:
 			'Rotifers are tiny animals found in fresh water, the ocean, and damp soil. They are truly multicellular and have specialized organ systems.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 10,
@@ -157,7 +204,7 @@ export const animalDiversityQuizData: Question[] = [
 		],
 		answer: 'They both use a lophophore structure.',
 		explanation: 'The lecture figure labels the lophophore in both ectoprocts and brachiopods.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 11,
@@ -172,7 +219,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'The phylum being discussed is Mollusca.',
 		explanation:
 			'Mollusca includes gastropods such as snails and slugs, bivalves such as oysters and clams, and cephalopods such as octopuses and squids.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 12,
@@ -187,7 +234,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'It has foot, visceral mass, mantle.',
 		explanation:
 			'The lecture states that all molluscs share a body plan with a muscular foot, visceral mass, and mantle. Many also have a mantle cavity and radula.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 13,
@@ -202,7 +249,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'The animal fits class Bivalvia best.',
 		explanation:
 			'Bivalves have shells divided into two halves and include clams, oysters, mussels, and scallops.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 14,
@@ -217,7 +264,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'Torsion caused the body arrangement.',
 		explanation:
 			'The lecture names torsion as the distinctive gastropod feature that causes the anus and mantle to end up above the head.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 15,
@@ -232,7 +279,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'The animal belongs with cephalopods.',
 		explanation:
 			'Cephalopods include squids, octopuses, cuttlefish, and chambered nautiluses. Squids use a siphon to fire a jet of water.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 16,
@@ -247,7 +294,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'The animal shows annelid segmentation.',
 		explanation:
 			'Annelids have bodies composed of a series of fused rings. The lecture lists Oligochaeta, Polychaeta, and Hirudinea as major classes.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 17,
@@ -261,7 +308,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'The leech belongs in class Hirudinea.',
 		explanation:
 			'The lecture divides Annelida into Oligochaeta, Polychaeta, and Hirudinea; leeches belong to Hirudinea.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 18,
@@ -276,7 +323,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'The animal matches a nematode condition.',
 		explanation:
 			'Nematodes, or roundworms, are found in many habitats and have an alimentary canal, but they lack a circulatory system.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 19,
@@ -291,7 +338,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'It has joints, segments, exoskeleton.',
 		explanation:
 			'Arthropods have a segmented body, a hard exoskeleton, and jointed appendages. The exoskeleton is a cuticle containing protein and chitin.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 20,
@@ -306,7 +353,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'It must molt its exoskeleton.',
 		explanation:
 			'Because the arthropod body is covered by a rigid cuticle, growth requires molting the old exoskeleton.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 21,
@@ -321,7 +368,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'Chelicerates, myriapods, hexapods, crustaceans.',
 		explanation:
 			'The lecture identifies chelicerates, myriapods, hexapods, and crustaceans as the four major arthropod lineages.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 22,
@@ -336,7 +383,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'The spider uses book lung organs.',
 		explanation:
 			'Spiders are arachnids, and the lecture notes that gas exchange in spiders occurs in respiratory organs called book lungs.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 23,
@@ -351,7 +398,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'Millipedes have two pairs per segment.',
 		explanation:
 			'The lecture describes myriapods as terrestrial mandibulates. Millipedes have two pairs of legs per trunk segment, while centipedes have one pair and are carnivores.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 24,
@@ -366,7 +413,7 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'It uses the water vascular system.',
 		explanation:
 			'Echinoderms have a water vascular system, a network of hydraulic canals branching into tube feet used in locomotion, feeding, and gas exchange.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 25,
@@ -381,6 +428,12 @@ export const animalDiversityQuizData: Question[] = [
 		answer: 'It has notochord and dorsal nerve-cord.',
 		explanation:
 			'The lecture key concepts state that chordates have a notochord and a dorsal, hollow nerve cord. More derived groups include craniates, vertebrates, gnathostomes, tetrapods, amniotes, mammals, and humans.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	}
 ];
+
+export const animalDiversityQuizData = animalDiversityQuizItems.map((question) => ({
+	...question,
+	difficulty: 'expert' as const,
+	illustration: question.illustration ?? animalIllustrationFor(question.id)
+})) satisfies Question[];

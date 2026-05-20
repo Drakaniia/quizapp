@@ -50,7 +50,13 @@ const chromosomePackingIllustration = `
 	</g>
 </svg>`;
 
-export const molecularStructureDnaQuizData: Question[] = [
+function molecularStructureIllustrationFor(id: number) {
+	if (id <= 2 || id === 6 || id === 17) return chargaffIllustration;
+	if (id <= 12 || id === 18 || id === 19 || id === 20) return helixGeometryIllustration;
+	return chromosomePackingIllustration;
+}
+
+const molecularStructureDnaQuizItems: Question[] = [
 	{
 		id: 1,
 		question:
@@ -64,7 +70,7 @@ export const molecularStructureDnaQuizData: Question[] = [
 		answer: 'Hydrogen bonds break before covalent bonds.',
 		explanation:
 			'The lecture notes that purified DNA can be denatured by gentle heating without cleavage of covalent bonds, meaning strand separation disrupts weak interstrand bonding rather than the sugar-phosphate backbone.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 2,
@@ -95,7 +101,7 @@ export const molecularStructureDnaQuizData: Question[] = [
 		answer: 'X-ray diffraction patterns from DNA fibers.',
 		explanation:
 			'The lecture lists X-ray diffraction patterns of DNA fibers as evidence indicating a helical structure.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: helixGeometryIllustration
 	},
 	{
@@ -111,7 +117,7 @@ export const molecularStructureDnaQuizData: Question[] = [
 		answer: 'The strands must be anti-parallel.',
 		explanation:
 			'The feature slide describes DNA as a double helix with two strands anti-parallel to each other, shown as opposite 5-prime and 3-prime orientations.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 5,
@@ -126,7 +132,7 @@ export const molecularStructureDnaQuizData: Question[] = [
 		answer: 'Alternating deoxyribose and phosphate groups.',
 		explanation:
 			'The DNA backbone or railing is described as deoxyribose phosphate, while bases bridge the strands internally.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 6,
@@ -141,7 +147,7 @@ export const molecularStructureDnaQuizData: Question[] = [
 		answer: 'Guanine pairs specifically with cytosine.',
 		explanation:
 			'The lecture uses C triple-bond G notation to emphasize complementary base pairing through hydrogen bonding, not covalent conversion or backbone cleavage.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: chargaffIllustration
 	},
 	{
@@ -156,7 +162,7 @@ export const molecularStructureDnaQuizData: Question[] = [
 		answer: 'Their large number compensates collectively.',
 		explanation:
 			'The lecture states that hydrogen bonds are relatively weak, but their preponderance compensates, giving the molecule stability and rigidity.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 8,
@@ -201,7 +207,7 @@ export const molecularStructureDnaQuizData: Question[] = [
 		answer: 'Each strand specifies its complementary strand.',
 		explanation:
 			'The lecture links specific hydrogen-bonded base pairing with replicability: sequence on one strand determines the complementary strand.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 11,
@@ -216,7 +222,7 @@ export const molecularStructureDnaQuizData: Question[] = [
 		answer: 'The varying order of nitrogenous bases.',
 		explanation:
 			'The lecture states that variety is supplied by varying the order of bases along the long DNA molecule.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 12,
@@ -230,7 +236,7 @@ export const molecularStructureDnaQuizData: Question[] = [
 		answer: 'Chromosome carries genes; genes consist of DNA.',
 		explanation:
 			'The chromosome is described as the carrier of genes, and the gene as the physical and functional unit of heredity consisting of DNA.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 13,
@@ -245,7 +251,7 @@ export const molecularStructureDnaQuizData: Question[] = [
 		answer: 'The long chromosome must fit inside the cell.',
 		explanation:
 			'The prokaryotic chromosome slide says the lone bacterial chromosome cannot exist as a long chain in the cell and therefore exists in a condensed nucleoid state.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: chromosomePackingIllustration
 	},
 	{
@@ -277,7 +283,7 @@ export const molecularStructureDnaQuizData: Question[] = [
 		answer: 'The nucleosome is the structural unit.',
 		explanation:
 			'The eukaryotic chromosome section states that the structural unit is the nucleosome.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: chromosomePackingIllustration
 	},
 	{
@@ -324,7 +330,7 @@ export const molecularStructureDnaQuizData: Question[] = [
 		answer: 'It defines covalent strand directionality.',
 		explanation:
 			'One evidence slide states that DNA consists of nucleotides linked by 3-prime to 5-prime phosphodiester bonds, establishing directional covalent strands.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 19,
@@ -353,7 +359,13 @@ export const molecularStructureDnaQuizData: Question[] = [
 		answer: 'Backbones are rails; paired bases are steps.',
 		explanation:
 			'The DNA feature slides describe the backbone or railing as deoxyribose phosphate, with nitrogenous base pairs bridging the strands as steps.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: helixGeometryIllustration
 	}
 ];
+
+export const molecularStructureDnaQuizData = molecularStructureDnaQuizItems.map((question) => ({
+	...question,
+	difficulty: 'expert' as const,
+	illustration: question.illustration ?? molecularStructureIllustrationFor(question.id)
+})) satisfies Question[];

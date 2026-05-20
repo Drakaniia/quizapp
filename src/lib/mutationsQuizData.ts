@@ -54,7 +54,14 @@ const mutationRateIllustration = `
 	</g>
 </svg>`;
 
-export const mutationsQuizData: Question[] = [
+function mutationsIllustrationFor(id: number) {
+	if (id <= 8) return chromosomeMutationIllustration;
+	if (id <= 13) return pointMutationIllustration;
+	if (id <= 17) return transposonIllustration;
+	return mutationRateIllustration;
+}
+
+const mutationsQuizItems: Question[] = [
 	{
 		id: 1,
 		question: 'Which definition best matches the lecture framing of mutation?',
@@ -67,7 +74,7 @@ export const mutationsQuizData: Question[] = [
 		answer: 'Heritable permanent change in genetic material.',
 		explanation:
 			'The opening slide defines mutations as changes in genetic material that are heritable and essentially permanent.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 2,
@@ -82,7 +89,7 @@ export const mutationsQuizData: Question[] = [
 		answer: 'Euploidy changes the whole genome set.',
 		explanation:
 			'Euploidy is described as a chromosomal mutation involving the whole genome or entire chromosome set.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: chromosomeMutationIllustration
 	},
 	{
@@ -97,7 +104,7 @@ export const mutationsQuizData: Question[] = [
 		answer: 'Multiple chromosome sets from one species.',
 		explanation:
 			'Autopolyploids are composed of multiple chromosome sets originating within one species, with cultivated potato listed as an autotetraploid example.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: chromosomeMutationIllustration
 	},
 	{
@@ -144,7 +151,7 @@ export const mutationsQuizData: Question[] = [
 		answer: 'It illustrates experimental allopolyploid formation.',
 		explanation:
 			'Raphanobrassica is presented under chromosomal mutation examples involving polyploidy from different species, making it an allopolyploid case.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 7,
@@ -158,7 +165,7 @@ export const mutationsQuizData: Question[] = [
 		answer: 'Trisomic, with one chromosome in excess.',
 		explanation:
 			'The aneuploidy slide lists monosomic as 2n - 1, nullisomic as 2n - 2, trisomic as 2n + 1, and tetrasomic as 2n + 2.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: chromosomeMutationIllustration
 	},
 	{
@@ -173,7 +180,7 @@ export const mutationsQuizData: Question[] = [
 		answer: 'Nondisjunction of chromosomes during division.',
 		explanation:
 			'The aneuploidy section states that aneuploidy can arise via nondisjunction of chromosomes.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 9,
@@ -188,7 +195,7 @@ export const mutationsQuizData: Question[] = [
 		answer: 'Deficiency or deletion of a segment.',
 		explanation:
 			'The lecture describes deficiencies or deletions as almost always lethal when homozygous and often lethal when heterozygous.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 10,
@@ -232,7 +239,7 @@ export const mutationsQuizData: Question[] = [
 		answer: 'Transition substitution between similar bases.',
 		explanation:
 			'The point-mutation slide defines transition as substitution of A by G or T by C, while transversion is substitution such as G by C or T by A.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 13,
@@ -247,7 +254,7 @@ export const mutationsQuizData: Question[] = [
 		answer: 'Same-sense substitution outcome.',
 		explanation:
 			'The base-pair substitution section lists same sense, missense, and nonsense outcomes; same sense changes the sequence without changing the encoded amino acid.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: pointMutationIllustration
 	},
 	{
@@ -263,7 +270,7 @@ export const mutationsQuizData: Question[] = [
 		answer: 'Nonsense mutation introducing termination.',
 		explanation:
 			'In the lecture analogy, nonsense truncates the message, corresponding to a base substitution that creates a premature stop.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: pointMutationIllustration
 	},
 	{
@@ -279,7 +286,7 @@ export const mutationsQuizData: Question[] = [
 		answer: 'It changes the downstream triplet reading frame.',
 		explanation:
 			'The frameshift slide defines frameshift mutations as insertion or deletion of one or two nucleotides that changes the reading frame.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: pointMutationIllustration
 	},
 	{
@@ -310,7 +317,7 @@ export const mutationsQuizData: Question[] = [
 		answer: 'Transposons, or jumping genes.',
 		explanation:
 			'The lecture identifies Barbara McClintock as discovering the Activator-Dissociation transposon system in maize, producing colored, white, and variegated kernels.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: transposonIllustration
 	},
 	{
@@ -341,7 +348,7 @@ export const mutationsQuizData: Question[] = [
 		answer: 'X-rays, nitrous acid, colchicine, regeneration.',
 		explanation:
 			'The mutagen slide lists ionizing radiation, chemical mutagens including nitrous acid and colchicine, extreme conditions, cell regeneration, and hybridization.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 20,
@@ -359,3 +366,9 @@ export const mutationsQuizData: Question[] = [
 		illustration: mutationRateIllustration
 	}
 ];
+
+export const mutationsQuizData = mutationsQuizItems.map((question) => ({
+	...question,
+	difficulty: 'expert' as const,
+	illustration: question.illustration ?? mutationsIllustrationFor(question.id)
+})) satisfies Question[];

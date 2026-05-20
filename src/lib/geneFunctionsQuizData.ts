@@ -63,7 +63,14 @@ const processingIllustration = `
 	</g>
 </svg>`;
 
-export const geneFunctionsQuizData: Question[] = [
+function geneFunctionsIllustrationFor(id: number) {
+	if (id <= 6) return centralDogmaIllustration;
+	if (id <= 13) return promoterIllustration;
+	if (id <= 18) return translationIllustration;
+	return processingIllustration;
+}
+
+const geneFunctionsQuizItems: Question[] = [
 	{
 		id: 1,
 		question:
@@ -77,7 +84,7 @@ export const geneFunctionsQuizData: Question[] = [
 		answer: 'Homogentisic acid accumulated in patients.',
 		explanation:
 			'The alcaptonuria slides state that accumulation of homogentisic acid, or alcapton, resulted from a biochemical block in patients lacking HA oxidase.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 2,
@@ -92,7 +99,7 @@ export const geneFunctionsQuizData: Question[] = [
 		answer: 'Phe and Tyr are alcapton precursors.',
 		explanation:
 			'The lecture says phenylalanine and tyrosine were established as precursors of alcapton by feeding those amino acids to alcaptonuric patients.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 3,
@@ -107,7 +114,7 @@ export const geneFunctionsQuizData: Question[] = [
 		answer: 'Genes regulate definite chemical events.',
 		explanation:
 			'The lecture states that Beadle and Tatum proposed genes act by regulating definite chemical events, based on a one-to-one correspondence between mutation and missing enzyme.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 4,
@@ -122,7 +129,7 @@ export const geneFunctionsQuizData: Question[] = [
 		answer: 'Sickle cell anemia from sequence alteration.',
 		explanation:
 			'The protein structure slides use sickle cell anemia as the consequence of valine substituting for glutamic acid at position 6 of the beta chain.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 5,
@@ -152,7 +159,7 @@ export const geneFunctionsQuizData: Question[] = [
 		answer: 'DNA to RNA during transcription.',
 		explanation:
 			'The central-dogma slide separates general transfers in all cells from special transfers in viruses, including RNA to RNA and RNA to DNA.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: centralDogmaIllustration
 	},
 	{
@@ -183,7 +190,7 @@ export const geneFunctionsQuizData: Question[] = [
 		answer: 'RNA Pol II transcribes mRNA genes.',
 		explanation:
 			'The lecture lists RNA Pol I for larger rRNA genes, RNA Pol II for mRNA genes, and RNA Pol III for tRNA and other small RNA genes.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 9,
@@ -198,7 +205,7 @@ export const geneFunctionsQuizData: Question[] = [
 		answer: 'The sigma subunit mediates promoter binding.',
 		explanation:
 			'The lecture describes alpha as assembly-related, beta as the ribonucleotide phosphate binding site, beta-prime as DNA template binding, and sigma as mediating promoter binding.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: promoterIllustration
 	},
 	{
@@ -228,7 +235,7 @@ export const geneFunctionsQuizData: Question[] = [
 		answer: 'It facilitates DNA unwinding into a bubble.',
 		explanation:
 			'The lecture states that the AT-rich Pribnow box facilitates unwinding of DNA, forming a transcription bubble involving about 18 nucleotide pairs.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: promoterIllustration
 	},
 	{
@@ -274,7 +281,7 @@ export const geneFunctionsQuizData: Question[] = [
 		answer: 'fMet-tRNA enters first.',
 		explanation:
 			'The translation section states that the first aa-tRNA complex to enter polypeptide synthesis is fMet-tRNA as the initiator.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: translationIllustration
 	},
 	{
@@ -289,7 +296,7 @@ export const geneFunctionsQuizData: Question[] = [
 		answer: 'AUG leads into a 70S initiation complex.',
 		explanation:
 			'The lecture identifies AUG at the 5-prime end as the methionine start codon and describes assembly of 50S plus 30S subunits into the 70S complex.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: translationIllustration
 	},
 	{
@@ -305,7 +312,7 @@ export const geneFunctionsQuizData: Question[] = [
 		answer: 'The A site, also called acceptor site.',
 		explanation:
 			'The lecture names the P site as peptidyl or donor and the A site as aminoacyl or acceptor; the next aa-tRNA enters the A site according to the mRNA codon.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: translationIllustration
 	},
 	{
@@ -320,7 +327,7 @@ export const geneFunctionsQuizData: Question[] = [
 		answer: 'A terminator codon activates release factors.',
 		explanation:
 			'Polymerization stops when a terminator codon enters the ribosome and activates release factors RF1 and RF2, causing ribosome release from mRNA.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 18,
@@ -334,7 +341,7 @@ export const geneFunctionsQuizData: Question[] = [
 		answer: 'mRNA can be translated while being made.',
 		explanation:
 			'The lecture notes that translation occurs almost simultaneously with transcription in prokaryotes, consistent with ribosomes engaging mRNA as it is produced.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 19,
@@ -368,3 +375,9 @@ export const geneFunctionsQuizData: Question[] = [
 		illustration: processingIllustration
 	}
 ];
+
+export const geneFunctionsQuizData = geneFunctionsQuizItems.map((question) => ({
+	...question,
+	difficulty: 'expert' as const,
+	illustration: question.illustration ?? geneFunctionsIllustrationFor(question.id)
+})) satisfies Question[];

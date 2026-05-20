@@ -4,7 +4,7 @@ export interface Question {
 	options: string[];
 	answer: string;
 	explanation: string;
-	difficulty: 'advanced' | 'expert';
+	difficulty: 'expert';
 	illustration?: string;
 }
 
@@ -88,7 +88,14 @@ const speciationIllustration = `
 	</g>
 </svg>`;
 
-export const populationGeneticsQuizData: Question[] = [
+function populationGeneticsIllustrationFor(id: number) {
+	if (id <= 7) return hardyWeinbergIllustration;
+	if (id <= 15) return selectionModesIllustration;
+	if (id <= 18) return geneFlowDriftIllustration;
+	return speciationIllustration;
+}
+
+const populationGeneticsQuizItems: Question[] = [
 	{
 		id: 1,
 		question:
@@ -102,7 +109,7 @@ export const populationGeneticsQuizData: Question[] = [
 		answer: 'Interbreeding individuals sharing one gene pool.',
 		explanation:
 			'The lecture defines a genetic population as sexually interbreeding individuals that share a common gene pool, not merely organisms living near each other.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 2,
@@ -117,7 +124,7 @@ export const populationGeneticsQuizData: Question[] = [
 		answer: 'Allele frequencies remain stable across generations.',
 		explanation:
 			'Hardy-Weinberg equilibrium predicts unchanged gene frequency across generations when a large randomly mating population has no outside forces changing it.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: hardyWeinbergIllustration
 	},
 	{
@@ -195,7 +202,7 @@ export const populationGeneticsQuizData: Question[] = [
 		answer: 'Mutation must recur before population effect.',
 		explanation:
 			'The mutation section states that mutation must be recurrent to affect the population and summarizes the relationship as mutation proposes, selection disposes.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 8,
@@ -210,7 +217,7 @@ export const populationGeneticsQuizData: Question[] = [
 		answer: 'Directional selection favoring one extreme.',
 		explanation:
 			'Directional selection preserves one phenotypic extreme when it becomes fit, whereas stabilizing selection removes extremes and disruptive selection favors both extremes.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: selectionModesIllustration
 	},
 	{
@@ -226,7 +233,7 @@ export const populationGeneticsQuizData: Question[] = [
 		answer: 'Disruptive selection maintaining divergent forms.',
 		explanation:
 			'The lecture describes disruptive or diversifying selection as favoring both extremes, preserving differences in the gene pool and potentially leading toward sub-speciation.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: selectionModesIllustration
 	},
 	{
@@ -272,7 +279,7 @@ export const populationGeneticsQuizData: Question[] = [
 		answer: 'Balanced polymorphism through heterozygote advantage.',
 		explanation:
 			'The lecture uses sickle-cell resistance to malaria as an example of balanced polymorphism, where heterozygote advantage helps maintain multiple forms.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: selectionModesIllustration
 	},
 	{
@@ -288,7 +295,7 @@ export const populationGeneticsQuizData: Question[] = [
 		answer: 'New mutations and recombination supply variation.',
 		explanation:
 			'The lecture states that selection works on phenotypes, while new mutations and sexual recombination provide material for continued selection.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 14,
@@ -303,7 +310,7 @@ export const populationGeneticsQuizData: Question[] = [
 		answer: 'Inbreeding depression from increased homozygosity.',
 		explanation:
 			'Inbreeding is assortative mating among close relatives. It increases homozygosity and exposes deleterious recessive alleles, reducing fitness.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 15,
@@ -318,7 +325,7 @@ export const populationGeneticsQuizData: Question[] = [
 		answer: 'Hybrid vigor reversing inbreeding depression.',
 		explanation:
 			'The mating-system section states that hybridization of unrelated inbred lines can reverse inbreeding depression through hybrid vigor, also called heterosis.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 16,
@@ -365,7 +372,7 @@ export const populationGeneticsQuizData: Question[] = [
 		answer: 'Founder principle within genetic drift.',
 		explanation:
 			'The lecture treats the founder principle as a drift-related change caused when a new population arises from a few founders, such as on an isolated island.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: geneFlowDriftIllustration
 	},
 	{
@@ -381,7 +388,7 @@ export const populationGeneticsQuizData: Question[] = [
 		answer: 'Fuse races into a single gene pool.',
 		explanation:
 			'Race formation is reversible in the lecture. Migration between races can fuse them into a single gene pool because they are not reproductively isolated.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: speciationIllustration
 	},
 	{
@@ -401,3 +408,9 @@ export const populationGeneticsQuizData: Question[] = [
 		illustration: speciationIllustration
 	}
 ];
+
+export const populationGeneticsQuizData = populationGeneticsQuizItems.map((question) => ({
+	...question,
+	difficulty: 'expert' as const,
+	illustration: question.illustration ?? populationGeneticsIllustrationFor(question.id)
+})) satisfies Question[];

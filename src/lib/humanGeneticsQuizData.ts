@@ -4,7 +4,7 @@ export interface Question {
 	options: string[];
 	answer: string;
 	explanation: string;
-	difficulty: 'advanced' | 'expert';
+	difficulty: 'expert';
 	illustration?: string;
 }
 
@@ -94,7 +94,15 @@ const behaviorIllustration = `
 	</g>
 </svg>`;
 
-export const humanGeneticsQuizData: Question[] = [
+function humanGeneticsIllustrationFor(id: number) {
+	if (id <= 5) return karyotypeIllustration;
+	if (id <= 10) return sexAneuploidIllustration;
+	if (id <= 14) return translocationIllustration;
+	if (id <= 20) return metabolismIllustration;
+	return behaviorIllustration;
+}
+
+const humanGeneticsQuizItems: Question[] = [
 	{
 		id: 1,
 		question:
@@ -108,7 +116,7 @@ export const humanGeneticsQuizData: Question[] = [
 		answer: 'Building a karyotype for chromosome-level analysis.',
 		explanation:
 			'A karyotype is the cytogenetic arrangement of chromosomes according to size and centromere position.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: karyotypeIllustration
 	},
 	{
@@ -124,7 +132,7 @@ export const humanGeneticsQuizData: Question[] = [
 		answer: 'Most X-linked loci lack matching Y-linked partners.',
 		explanation:
 			'The lecture states that X and Y are homologous only over a tiny end segment; the X carries many genes unrelated to sex determination, while many Y-linked genes are sex-determination related.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 3,
@@ -138,7 +146,7 @@ export const humanGeneticsQuizData: Question[] = [
 		],
 		answer: 'It supports Down syndrome caused by autosomal aneuploidy.',
 		explanation: 'Down syndrome is listed as trisomy 21, an autosomal aneuploid condition.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 4,
@@ -153,7 +161,7 @@ export const humanGeneticsQuizData: Question[] = [
 		answer: 'Edward syndrome, not Patau syndrome.',
 		explanation:
 			'The lecture identifies Edward syndrome as trisomy 18 and notes overlapping fingers with clenched fists.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 5,
@@ -168,7 +176,7 @@ export const humanGeneticsQuizData: Question[] = [
 		answer: 'Patau syndrome with multiple physical defects.',
 		explanation:
 			'D trisomy syndrome involves chromosomes 13, 14, or 15; Patau syndrome is trisomy 13.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 6,
@@ -183,7 +191,7 @@ export const humanGeneticsQuizData: Question[] = [
 		answer: '45,X Turner syndrome.',
 		explanation:
 			'Turner syndrome is described as an XO condition with one X chromosome, short stature, retarded sexual development, and frequent sterility.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: sexAneuploidIllustration
 	},
 	{
@@ -231,7 +239,7 @@ export const humanGeneticsQuizData: Question[] = [
 		answer: 'XYY may be normal, with height and learning issues.',
 		explanation:
 			'The lecture notes early prison observations but says later studies showed XYY individuals can be normal, with traits such as exceptional height, acne, speech problems, and reading problems.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: sexAneuploidIllustration
 	},
 	{
@@ -262,7 +270,7 @@ export const humanGeneticsQuizData: Question[] = [
 		answer: 'Cri-du-chat syndrome.',
 		explanation:
 			'Cri-du-chat, or 5p- syndrome, is due to deletion of the short arm of chromosome 5 and can cause abnormal larynx development.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 12,
@@ -314,7 +322,7 @@ export const humanGeneticsQuizData: Question[] = [
 		answer: 'Galactosemia.',
 		explanation:
 			'Galactosemia is described as inability to metabolize galactose because gg individuals lack Gal-1-P uridyl transferase.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: metabolismIllustration
 	},
 	{
@@ -325,7 +333,7 @@ export const humanGeneticsQuizData: Question[] = [
 		answer: 'Phenylketonuria.',
 		explanation:
 			'PKU is listed as the inability to convert phenylalanine to tyrosine and then serotonin.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: metabolismIllustration
 	},
 	{
@@ -367,7 +375,7 @@ export const humanGeneticsQuizData: Question[] = [
 		answer: 'Thalassemia.',
 		explanation:
 			'Thalassemia is described as hereditary anemia due to a reduced rate of synthesis of one globin chain, occurring commonly in Mediterranean countries.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 20,
@@ -412,7 +420,7 @@ export const humanGeneticsQuizData: Question[] = [
 		answer: 'Schizophrenia.',
 		explanation:
 			'The schizophrenia slide lists abnormalities in perception of reality, psychosis with delusions and hallucinations, young adult onset, and scan sites on chromosomes 1, 4, 6, 9, and 11.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 23,
@@ -427,7 +435,7 @@ export const humanGeneticsQuizData: Question[] = [
 		answer: 'Anorexia nervosa.',
 		explanation:
 			'Anorexia nervosa is described as perceiving oneself as obese and intentionally starving; the lecture gives a death risk of 15 to 21 percent.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 24,
@@ -442,7 +450,7 @@ export const humanGeneticsQuizData: Question[] = [
 		answer: 'Binge eating followed by exercise or induced vomiting.',
 		explanation:
 			'Bulimia nervosa is characterized by overeating followed by vigorous exercise and self-induced vomiting to maintain weight.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 25,
@@ -457,7 +465,7 @@ export const humanGeneticsQuizData: Question[] = [
 		answer: 'Muscle dysmorphia, also called Adonis complex.',
 		explanation:
 			'Muscle dysmorphia, also called bigorexia or Adonis complex, is described as common among males who see themselves as too small and take amino acid supplements to bulk up.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 26,
@@ -503,7 +511,7 @@ export const humanGeneticsQuizData: Question[] = [
 		answer: 'The g value, or general intelligence ability.',
 		explanation:
 			'The intelligence slide defines the g value as general intelligence ability, including verbal fluency, mathematical reasoning, memory, and spatial visualization.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 29,
@@ -536,3 +544,9 @@ export const humanGeneticsQuizData: Question[] = [
 		difficulty: 'expert'
 	}
 ];
+
+export const humanGeneticsQuizData = humanGeneticsQuizItems.map((question) => ({
+	...question,
+	difficulty: 'expert' as const,
+	illustration: question.illustration ?? humanGeneticsIllustrationFor(question.id)
+})) satisfies Question[];

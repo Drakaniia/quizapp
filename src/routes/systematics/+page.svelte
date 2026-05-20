@@ -200,7 +200,7 @@
 					</div>
 				</div>
 				<p class="font-['JetBrains_Mono'] text-[10px] tracking-widest text-[#8a8062] uppercase">
-					Total Items: {systematicsQuizData.length} // Mode: Applied Systematics
+					Total Items: {systematicsQuizData.length} // Mode: Expert Systematics
 				</p>
 			</section>
 		{:else if currentStep === 'quiz'}
@@ -252,8 +252,6 @@
 									{#if currentQuestion.difficulty}
 										<span
 											class="inline-block rounded px-2 py-1 font-['JetBrains_Mono'] text-[10px] tracking-widest uppercase
-											{currentQuestion.difficulty === 'intermediate' ? 'bg-[#f4c54220] text-[#f4c542]' : ''}
-											{currentQuestion.difficulty === 'advanced' ? 'bg-[#3fb6a820] text-[#3fb6a8]' : ''}
 											{currentQuestion.difficulty === 'expert' ? 'bg-[#f16d4d20] text-[#f16d4d]' : ''}"
 										>
 											{currentQuestion.difficulty}
@@ -261,6 +259,14 @@
 									{/if}
 								</div>
 							</div>
+
+							{#if currentQuestion.illustration}
+								<div
+									class="systematics-illustration overflow-hidden border border-[#50472b] bg-[#17150f] p-3"
+								>
+									{@html currentQuestion.illustration}
+								</div>
+							{/if}
 
 							<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 								{#each currentQuestion.options as option (option)}
@@ -423,6 +429,12 @@
 
 	button {
 		cursor: pointer;
+	}
+
+	:global(.systematics-illustration svg) {
+		display: block;
+		width: 100%;
+		height: auto;
 	}
 
 	::-webkit-scrollbar {

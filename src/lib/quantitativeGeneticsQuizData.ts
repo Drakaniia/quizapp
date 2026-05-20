@@ -61,7 +61,14 @@ const heritabilityIllustration = `
 	</g>
 </svg>`;
 
-export const quantitativeGeneticsQuizData: Question[] = [
+function quantitativeGeneticsIllustrationFor(id: number) {
+	if (id <= 12) return normalCurveIllustration;
+	if (id <= 15) return regressionIllustration;
+	if (id <= 18) return varianceIllustration;
+	return heritabilityIllustration;
+}
+
+const quantitativeGeneticsQuizItems: Question[] = [
 	{
 		id: 1,
 		question: 'Which aim best matches quantitative genetics as introduced in the lecture?',
@@ -74,7 +81,7 @@ export const quantitativeGeneticsQuizData: Question[] = [
 		answer: 'Analyze genetic and environmental trait influence.',
 		explanation:
 			'The first slide defines quantitative genetics as analysis of how genetic and environmental factors influence inheritance and expression of quantitative traits.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 2,
@@ -89,7 +96,7 @@ export const quantitativeGeneticsQuizData: Question[] = [
 		answer: 'It predicts selected traits and adaptation.',
 		explanation:
 			'The lecture links quantitative genetics to artificial selection by breeders and to evolution through traits that allow species to adapt to environments.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 3,
@@ -104,7 +111,7 @@ export const quantitativeGeneticsQuizData: Question[] = [
 		answer: 'It is a quantitative trait.',
 		explanation:
 			'Quantitative traits are defined as traits that vary measurably in a species and can be described by phenotypic measurements.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: normalCurveIllustration
 	},
 	{
@@ -119,7 +126,7 @@ export const quantitativeGeneticsQuizData: Question[] = [
 		answer: 'Milk production, learning ability, obesity.',
 		explanation:
 			'The lecture lists physiological traits such as milk production, behavioral traits such as learning abilities, and complex diseases such as obesity as quantitative traits.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 5,
@@ -134,7 +141,7 @@ export const quantitativeGeneticsQuizData: Question[] = [
 		answer: 'Genotype and environment together.',
 		explanation:
 			'The lecture states that Johannsen explained continuous variation in quantitative traits as due to genotype and environment.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: normalCurveIllustration
 	},
 	{
@@ -150,7 +157,7 @@ export const quantitativeGeneticsQuizData: Question[] = [
 		answer: 'Polygenes, or multiple factors.',
 		explanation:
 			'The lecture says continuous variation may be due to multiple genes with small effects, later called multiple factors or polygenes.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 7,
@@ -180,7 +187,7 @@ export const quantitativeGeneticsQuizData: Question[] = [
 		answer: 'Additive alleles with no dominance.',
 		explanation:
 			'The polygenic hypothesis assumptions include two or more genes, additive alleles, no dominance, intermediate F1, environmental effects, and quantified characters.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 9,
@@ -211,7 +218,7 @@ export const quantitativeGeneticsQuizData: Question[] = [
 		answer: 'Environment can modify quantitative phenotype.',
 		explanation:
 			'The lecture uses height and nutrition to show obvious environmental effects on a quantitative trait, even when genetic potential differs among people.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 11,
@@ -225,7 +232,7 @@ export const quantitativeGeneticsQuizData: Question[] = [
 		answer: 'Standard deviation is the square root of variance.',
 		explanation:
 			'The lecture lists variance as the amount of phenotypic variation and standard deviation as the square root of variance.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 12,
@@ -240,7 +247,7 @@ export const quantitativeGeneticsQuizData: Question[] = [
 		answer: 'Coefficient of variation compares variability.',
 		explanation:
 			'The coefficient of variation is described as a measure used to compare variability of different samples or experiments.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 13,
@@ -255,7 +262,7 @@ export const quantitativeGeneticsQuizData: Question[] = [
 		answer: 'The correlation coefficient is negative.',
 		explanation:
 			'The lecture explains that correlation is negative if a large Y goes with a small X, or equivalently if the variables move in opposite directions.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: regressionIllustration
 	},
 	{
@@ -270,7 +277,7 @@ export const quantitativeGeneticsQuizData: Question[] = [
 		answer: 'The slope, or change in y per x.',
 		explanation:
 			'The regression slide states that the slope is the multiplier of x, the amount of change in y for a one-unit change in x; in y = 1.0 + 0.5x, the slope is 0.5.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: regressionIllustration
 	},
 	{
@@ -286,7 +293,7 @@ export const quantitativeGeneticsQuizData: Question[] = [
 		answer: 'Regression of offspring toward the mean.',
 		explanation:
 			'The regression-to-the-mean slides describe Galton observing that extremely tall fathers tended to have shorter sons and extremely short fathers tended to have taller sons.',
-		difficulty: 'advanced',
+		difficulty: 'expert',
 		illustration: regressionIllustration
 	},
 	{
@@ -368,3 +375,9 @@ export const quantitativeGeneticsQuizData: Question[] = [
 		illustration: heritabilityIllustration
 	}
 ];
+
+export const quantitativeGeneticsQuizData = quantitativeGeneticsQuizItems.map((question) => ({
+	...question,
+	difficulty: 'expert' as const,
+	illustration: question.illustration ?? quantitativeGeneticsIllustrationFor(question.id)
+})) satisfies Question[];

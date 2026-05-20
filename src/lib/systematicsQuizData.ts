@@ -4,24 +4,58 @@ export interface Question {
 	options: string[];
 	answer: string;
 	explanation: string;
-	difficulty?: 'intermediate' | 'advanced' | 'expert';
+	difficulty: 'expert';
+	illustration?: string;
 }
 
-export const systematicsQuizData: Question[] = [
+const morphologyWorkflowIllustration = `
+<svg role="img" aria-label="Systematics morphology workflow" viewBox="0 0 760 250" xmlns="http://www.w3.org/2000/svg">
+	<rect width="760" height="250" rx="8" fill="#10100c"/>
+	<text x="34" y="40" fill="#f4c542" font-family="monospace" font-size="18" font-weight="700">MORPHOLOGY EVIDENCE WORKFLOW</text>
+	<g font-family="monospace" font-size="14" fill="#f1eee3">
+		<rect x="48" y="80" width="150" height="112" rx="6" fill="#17150f" stroke="#f4c542"/>
+		<text x="78" y="112">measure</text><text x="78" y="142">calipers</text><text x="78" y="170">matrix</text>
+		<rect x="228" y="80" width="150" height="112" rx="6" fill="#17150f" stroke="#3fb6a8"/>
+		<text x="258" y="112">observe</text><text x="258" y="142">microscope</text><text x="258" y="170">minute traits</text>
+		<rect x="408" y="80" width="150" height="112" rx="6" fill="#17150f" stroke="#f16d4d"/>
+		<text x="438" y="112">compare</text><text x="438" y="142">diagnostic</text><text x="438" y="170">characters</text>
+		<rect x="588" y="80" width="124" height="112" rx="6" fill="#17150f" stroke="#f4c542"/>
+		<text x="614" y="112">publish</text><text x="614" y="142">voucher</text><text x="614" y="170">record</text>
+	</g>
+</svg>`;
+
+const molecularWorkflowIllustration = `
+<svg role="img" aria-label="Systematics molecular workflow" viewBox="0 0 760 250" xmlns="http://www.w3.org/2000/svg">
+	<rect width="760" height="250" rx="8" fill="#10100c"/>
+	<text x="34" y="40" fill="#f4c542" font-family="monospace" font-size="18" font-weight="700">MOLECULAR SYSTEMATICS WORKFLOW</text>
+	<g font-family="monospace" font-size="14" fill="#f1eee3">
+		<rect x="56" y="86" width="130" height="96" rx="6" fill="#17150f" stroke="#3fb6a8"/><text x="84" y="122">PCR</text><text x="84" y="152">amplify</text>
+		<rect x="226" y="86" width="130" height="96" rx="6" fill="#17150f" stroke="#f4c542"/><text x="254" y="122">gel</text><text x="254" y="152">size check</text>
+		<rect x="396" y="86" width="130" height="96" rx="6" fill="#17150f" stroke="#f16d4d"/><text x="424" y="122">sequence</text><text x="424" y="152">ACTG read</text>
+		<rect x="566" y="86" width="130" height="96" rx="6" fill="#17150f" stroke="#3fb6a8"/><text x="594" y="122">tree</text><text x="594" y="152">relationship</text>
+		<path d="M194 134 H218 M364 134 H388 M534 134 H558" stroke="#f1eee3" stroke-width="4" stroke-linecap="round"/>
+	</g>
+</svg>`;
+
+function systematicsIllustrationFor(id: number) {
+	return id <= 14 ? morphologyWorkflowIllustration : molecularWorkflowIllustration;
+}
+
+const systematicsQuizItems: Question[] = [
 	{
 		id: 1,
 		question:
 			'When planning a systematics study, which set best matches the main approaches listed in the lecture?',
 		options: [
-			'It uses morphology, molecular tools, collections, and journals.',
-			'It uses anatomy, weather records, fossils, and surveys.',
-			'It uses behavior, maps, climate, and interviews.',
-			'It uses ecology, chemistry, soils, and drawings.'
+			'Morphology, molecular tools, collections, journals.',
+			'Anatomy, weather records, fossils, surveys.',
+			'Behavior, maps, climate, interviews, field guides.',
+			'Ecology, chemistry, soils, drawings, transects.'
 		],
-		answer: 'It uses morphology, molecular tools, collections, and journals.',
+		answer: 'Morphology, molecular tools, collections, journals.',
 		explanation:
 			'The lecture frames systematics through morphology, molecular systematics, museums and herbaria with data information systems, and scientific journals.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 2,
@@ -36,7 +70,7 @@ export const systematicsQuizData: Question[] = [
 		answer: 'A stereomicroscope is most appropriate for minute structures.',
 		explanation:
 			'The morphology slides identify stereomicroscopes as necessary for viewing minute characters such as insect genitalia and fungal spores.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 3,
@@ -51,7 +85,7 @@ export const systematicsQuizData: Question[] = [
 		answer: 'Digital calipers should measure the beetle structure.',
 		explanation:
 			'Digital calipers are listed for precise biometric measurements, including examples such as pronotum width of a stag beetle.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 4,
@@ -66,7 +100,7 @@ export const systematicsQuizData: Question[] = [
 		answer: 'Forceps, scalpels, and micro-pins fit this task.',
 		explanation:
 			'The lecture lists forceps, scalpels, and micro-pins as dissecting tools used for examining internal structures.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 5,
@@ -81,7 +115,7 @@ export const systematicsQuizData: Question[] = [
 		answer: 'They form the first character matrix.',
 		explanation:
 			'The morphology section states that standardized measurements and detailed illustrations form the initial character matrix.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 6,
@@ -96,7 +130,7 @@ export const systematicsQuizData: Question[] = [
 		answer: 'These traits are useful diagnostic characters.',
 		explanation:
 			'The diagnostic characters slide compares crows and ravens through traits such as travel pattern, habitat, life span, call, tail shape, and bill shape.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 7,
@@ -111,7 +145,7 @@ export const systematicsQuizData: Question[] = [
 		answer: 'Antennae, venation, patterns, body, legs, and genitalia.',
 		explanation:
 			'The butterfly morphology section lists antennae, wing venation, wing patterns, body structure, legs, and genitalia as external characters.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 8,
@@ -126,7 +160,7 @@ export const systematicsQuizData: Question[] = [
 		answer: 'It supports confirming the insect is a butterfly.',
 		explanation:
 			'The lecture describes clubbed antennae as the primary differentiator used to distinguish butterflies from moths.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 9,
@@ -141,7 +175,7 @@ export const systematicsQuizData: Question[] = [
 		answer: 'The clue points toward Hesperiidae identification.',
 		explanation:
 			'The antennae slide gives simple clubs for Papilionidae, thicker clubs for Nymphalidae, and a hooked club for Hesperiidae.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 10,
@@ -156,7 +190,7 @@ export const systematicsQuizData: Question[] = [
 		answer: 'Wing venation is reliable for classification.',
 		explanation:
 			'The lecture calls wing venation one of the most reliable taxonomic characters used in butterfly classification.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 11,
@@ -171,7 +205,7 @@ export const systematicsQuizData: Question[] = [
 		answer: 'They reflect camouflage, mimicry, and signaling.',
 		explanation:
 			'The wing pattern slide connects markings to species identification and to camouflage, mimicry, and sexual signaling.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 12,
@@ -186,7 +220,7 @@ export const systematicsQuizData: Question[] = [
 		answer: 'The butterfly suggests a Nymphalidae family.',
 		explanation:
 			'Nymphalidae are brush-footed butterflies with severely reduced forelegs, creating a four-legged appearance.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 13,
@@ -216,7 +250,7 @@ export const systematicsQuizData: Question[] = [
 		answer: 'Antenna shape should be checked first.',
 		explanation:
 			'The field identification sequence starts with antenna shape to confirm butterfly identity before checking wing shape, patterns, behavior, host plant, and location.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 15,
@@ -231,7 +265,7 @@ export const systematicsQuizData: Question[] = [
 		answer: 'A thermal cycler performs the amplification step.',
 		explanation:
 			'The molecular systematics slides describe thermal cyclers for PCR, where precise temperature cycling and Taq polymerase amplify target genome regions such as COI.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 16,
@@ -246,7 +280,7 @@ export const systematicsQuizData: Question[] = [
 		answer: 'A DNA sequencer is being used.',
 		explanation:
 			'DNA sequencers are described as machines that read the order of ACTG bases, from Sanger sequencing to whole-genome NGS platforms.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 17,
@@ -261,7 +295,7 @@ export const systematicsQuizData: Question[] = [
 		answer: 'It checks DNA size and quality.',
 		explanation:
 			'The gel electrophoresis slide explains that DNA runs through an agarose gel matrix under an electric field to check size and overall quality.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 18,
@@ -275,7 +309,7 @@ export const systematicsQuizData: Question[] = [
 		answer: 'It shows glowing target DNA bands.',
 		explanation:
 			'The lecture states that a UV transilluminator causes target DNA bands to glow bright orange for visual confirmation.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 19,
@@ -290,21 +324,21 @@ export const systematicsQuizData: Question[] = [
 		answer: 'They provide molecular evidence for relationships.',
 		explanation:
 			'The phylogenetic tree slide states that advances in molecular biology and polymeric molecules such as DNA, RNA, and proteins helped develop phylogenetic trees.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 20,
 		question: 'Which list contains examples of molecular data types named in the lecture?',
 		options: [
 			'DNA sequences, RFLPs, allozymes, microsatellites, RAPDs, AFLPs.',
-			'Wings, antennae, legs, abdomen, thorax, genitalia.',
-			'Forceps, scalpels, pins, calipers, lenses, notebooks.',
-			'Journals, archives, indexes, volumes, issues, editors.'
+			'Wing veins, antennae, legs, genitalia, color bands, scales.',
+			'Forceps, scalpels, pins, calipers, lenses, field notebooks.',
+			'Journals, archives, indexes, volumes, issues, editorial boards.'
 		],
 		answer: 'DNA sequences, RFLPs, allozymes, microsatellites, RAPDs, AFLPs.',
 		explanation:
 			'The molecular data slide lists DNA sequences, restriction sites or RFLPs, allozymes, microsatellites, RAPDs, and AFLPs.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 21,
@@ -319,7 +353,7 @@ export const systematicsQuizData: Question[] = [
 		answer: 'The target DNA becomes many copies.',
 		explanation:
 			'PCR is defined as a replication process used to amplify DNA into thousands of copies through denaturing, primer annealing, and polymerase extension.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 22,
@@ -333,7 +367,7 @@ export const systematicsQuizData: Question[] = [
 		answer: 'They terminate new DNA strand synthesis.',
 		explanation:
 			'The sequencing slide explains that dideoxynucleotides terminate the polymerase reaction once they join a new DNA strand.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 23,
@@ -348,21 +382,21 @@ export const systematicsQuizData: Question[] = [
 		answer: 'The chromatogram is easier to interpret.',
 		explanation:
 			'The chromatogram slide highlights absent baseline noise, evenly distributed peaks, and single-color peaks as basics for interpreting sequence data.',
-		difficulty: 'advanced'
+		difficulty: 'expert'
 	},
 	{
 		id: 24,
 		question: 'Which answer names the three DNA sequence data categories shown in the lecture?',
 		options: [
-			'They are chloroplast, nuclear, and mitochondrial DNA.',
+			'Chloroplast, nuclear, and mitochondrial DNA.',
 			'They are antenna, venation, and genital DNA.',
 			'They are journal, museum, and herbarium DNA.',
 			'They are caliper, scalpel, and primer DNA.'
 		],
-		answer: 'They are chloroplast, nuclear, and mitochondrial DNA.',
+		answer: 'Chloroplast, nuclear, and mitochondrial DNA.',
 		explanation:
 			'The sequence data slide lists chloroplast DNA, nuclear DNA, and mitochondrial DNA, noting that mtDNA is used more with animals than plants.',
-		difficulty: 'intermediate'
+		difficulty: 'expert'
 	},
 	{
 		id: 25,
@@ -380,3 +414,9 @@ export const systematicsQuizData: Question[] = [
 		difficulty: 'expert'
 	}
 ];
+
+export const systematicsQuizData = systematicsQuizItems.map((question) => ({
+	...question,
+	difficulty: 'expert' as const,
+	illustration: question.illustration ?? systematicsIllustrationFor(question.id)
+})) satisfies Question[];

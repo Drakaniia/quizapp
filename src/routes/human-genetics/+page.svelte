@@ -199,7 +199,7 @@
 					</button>
 				</div>
 				<p class="font-['JetBrains_Mono'] text-[10px] tracking-widest text-[#8d7e89] uppercase">
-					Total Items: {humanGeneticsQuizData.length} // Mode: Advanced Cases
+					Total Items: {humanGeneticsQuizData.length} // Mode: Expert Cases
 				</p>
 			</section>
 		{:else if currentStep === 'quiz'}
@@ -250,7 +250,6 @@
 									</h3>
 									<span
 										class="inline-block rounded px-2 py-1 font-['JetBrains_Mono'] text-[10px] tracking-widest uppercase
-										{currentQuestion.difficulty === 'advanced' ? 'bg-[#ff5aa520] text-[#ff5aa5]' : ''}
 										{currentQuestion.difficulty === 'expert' ? 'bg-[#f7c74420] text-[#f7c744]' : ''}"
 									>
 										{currentQuestion.difficulty}

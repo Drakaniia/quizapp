@@ -45,6 +45,13 @@
 			description: 'Morphology, DNA, barcoding, and NGS',
 			href: '/systematics',
 			icon: 'ST'
+		},
+		{
+			id: 'human-genetics',
+			title: 'Human Genetics',
+			description: 'Karyotypes, aneuploids, mutations, and behavior',
+			href: '/human-genetics',
+			icon: 'HG'
 		}
 	] as const;
 

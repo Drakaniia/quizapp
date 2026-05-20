@@ -22,7 +22,7 @@
 	eyebrow="Lecture 9 // Molecular Structure of DNA"
 	title="Molecular Structure"
 	accentTitle="DNA"
-	source="Source: 1_lec-9-molecular-structure-DNA.pdf"
+	source="Source: 1_lec-9-molecular-structure-DNA (1).pdf"
 	scope="Scope: Watson-Crick to Chromosome Packing"
 	topics={['Chargaff', 'Helix', 'Base Pairing', 'Packing']}
 	introTitle="Interrogate the Double Helix"
@@ -30,6 +30,6 @@
 	noteTitle="DNA Structure Note"
 	resultTitle="DNA Structure Assessment Complete"
 	scoreLabel="Molecular Structure Score"
-	footer="Source extracted from 1_lec-9-molecular-structure-DNA.pdf"
+	footer="Source extracted from 1_lec-9-molecular-structure-DNA (1).pdf"
 	{colors}
 />

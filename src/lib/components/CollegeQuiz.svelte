@@ -2,6 +2,7 @@
 	import { backOut, cubicOut } from 'svelte/easing';
 	import { fade, fly, slide } from 'svelte/transition';
 	import type { Question, QuizColors } from '$lib/collegeQuizTypes';
+	import MolecularViewer from '$lib/components/MolecularViewer.svelte';
 
 	interface QuizProps {
 		quizData: Question[];
@@ -232,7 +233,19 @@
 								</div>
 							</div>
 
-							{#if currentQuestion.illustration}
+							{#if currentQuestion.molecularViewer}
+								<div class="quiz-illustration">
+									<MolecularViewer
+										pdbId={currentQuestion.molecularViewer.pdbId}
+										style={currentQuestion.molecularViewer.style ?? 'cartoon'}
+										colorScheme={currentQuestion.molecularViewer.colorScheme ?? 'spectrum'}
+										height={currentQuestion.molecularViewer.height ?? 340}
+										autoRotate={currentQuestion.molecularViewer.autoRotate ?? true}
+										highlights={currentQuestion.molecularViewer.highlights}
+										title={currentQuestion.molecularViewer.title}
+									/>
+								</div>
+							{:else if currentQuestion.illustration}
 								<div class="quiz-illustration">
 									{@html currentQuestion.illustration}
 								</div>

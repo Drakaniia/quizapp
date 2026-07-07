@@ -36,5 +36,8 @@
 		"typescript-eslint": "^8.58.1",
 		"vite": "^8.0.7",
 		"wrangler": "^4.81.0"
+	},
+	"dependencies": {
+		"3dmol": "^2.5.5"
 	}
 }

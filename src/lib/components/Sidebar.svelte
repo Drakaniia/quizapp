@@ -101,6 +101,13 @@
 			description: 'Karyotypes, aneuploids, mutations, and behavior',
 			href: '/human-genetics',
 			icon: 'HG'
+		},
+		{
+			id: 'biological-macromolecules',
+			title: 'Biological Macromolecules',
+			description: 'Carbs, proteins, lipids, and nucleic acids',
+			href: '/biological-macromolecules',
+			icon: 'BM'
 		}
 	] as const;
 

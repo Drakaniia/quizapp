@@ -1,6 +1,7 @@
 node_modules
 
 # Output
+/output
 .output
 .vercel
 .netlify
@@ -25,6 +26,8 @@ vite.config.ts.timestamp-*
 .codex/
 
 # Lecture PDFs
-# /files
+/files
 
 tmp/
+.github/hooks/emdash.json
+.qwen/settings.json

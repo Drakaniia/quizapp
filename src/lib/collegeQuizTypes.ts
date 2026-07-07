@@ -1,3 +1,18 @@
+export interface MolecularViewerConfig {
+	pdbId: string;
+	style?: 'cartoon' | 'stick' | 'sphere' | 'surface';
+	colorScheme?: 'spectrum' | 'chain' | 'secondary' | 'amino';
+	height?: number;
+	autoRotate?: boolean;
+	highlights?: Array<{
+		chain?: string;
+		resi?: number | number[];
+		color?: string;
+		style?: 'stick' | 'sphere' | 'cartoon';
+	}>;
+	title?: string;
+}
+
 export interface Question {
 	id: number;
 	question: string;
@@ -6,6 +21,7 @@ export interface Question {
 	explanation: string;
 	difficulty: 'advanced' | 'expert';
 	illustration?: string;
+	molecularViewer?: MolecularViewerConfig;
 }
 
 export interface QuizColors {

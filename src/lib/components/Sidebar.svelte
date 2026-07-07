@@ -1,9 +1,49 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 
-	let isOpen = $state(false);
-
-	const quizTopics = [
+	let isOpen = $state(false);		const quizTopics = [
+		{
+			id: 'limiting-excess-reactant',
+			title: 'Limiting & Excess Reactant',
+			description: 'Stoichiometry, theoretical yield, percent yield, industrial applications',
+			href: '/limiting-excess-reactant',
+			icon: 'LR'
+		},
+		{
+			id: 'intermolecular-forces',
+			title: 'Intermolecular Forces',
+			description: 'London dispersion, dipole-dipole, hydrogen bonding, ion-dipole',
+			href: '/intermolecular-forces',
+			icon: 'IF'
+		},
+		{
+			id: 'effect-intermolecular-forces',
+			title: 'IMFA Effects',
+			description: 'Boiling point, vapor pressure, surface tension, viscosity, solubility',
+			href: '/effect-intermolecular-forces',
+			icon: 'EF'
+		},
+		{
+			id: 'polarity-molecules',
+			title: 'Polarity of Molecules',
+			description: 'Electronegativity, bond polarity, VSEPR geometry, dipole moments',
+			href: '/polarity-molecules',
+			icon: 'PM'
+		},
+		{
+			id: 'big-bang-nucleosynthesis',
+			title: 'Big Bang & Nucleosynthesis',
+			description: 'BBN, isotopes, stellar fusion, and element formation',
+			href: '/big-bang-nucleosynthesis',
+			icon: 'BN'
+		},
+		{
+			id: 'atomic-number-synthesis',
+			title: 'Atomic Number & Synthesis',
+			description: 'Mendeleev, Moseley, transmutation, and transuranic elements',
+			href: '/atomic-number-synthesis',
+			icon: 'AN'
+		},
 		{
 			id: 'hydrocarbons',
 			title: 'Hydrocarbons & Methane',
@@ -108,6 +148,20 @@
 			description: 'Carbs, proteins, lipids, and nucleic acids',
 			href: '/biological-macromolecules',
 			icon: 'BM'
+		},
+		{
+			id: 'collision-theory',
+			title: 'Collision Theory',
+			description: 'Activation energy, reaction rate, temperature, surface area, concentration, catalysts',
+			href: '/collision-theory',
+			icon: 'CT'
+		},
+		{
+			id: 'catalyst',
+			title: 'Catalyst',
+			description: 'Alternative pathway, activation energy, types of catalysts, enzyme catalysis',
+			href: '/catalyst',
+			icon: 'Ca'
 		}
 	] as const;
 

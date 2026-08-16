@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { humanGeneticsQuizData } from '$lib/humanGeneticsQuizData';
 	import { backOut, cubicOut } from 'svelte/easing';
+	import { resolve } from '$app/paths';
 	import { fade, fly, slide } from 'svelte/transition';
 
 	let currentStep = $state<'intro' | 'quiz' | 'results'>('intro');
@@ -138,6 +139,14 @@
 	</div>
 
 	<div class="relative mx-auto flex min-h-screen max-w-4xl flex-col px-6 py-12">
+		<nav
+			class="mb-6 flex items-center gap-2 font-['JetBrains_Mono'] text-[10px] tracking-widest text-[#888] uppercase"
+			aria-label="Breadcrumb"
+		>
+			<a href={resolve('/')} class="transition-colors hover:text-[#00f2ff]">Home</a>
+			<span aria-hidden="true" class="text-[#444]">/</span>
+			<span class="text-[#00f2ff]">Human Genetics</span>
+		</nav>
 		<header
 			class="mb-12 flex items-end justify-between border-b border-[#ffffff18] pb-6"
 			class:hidden={currentStep !== 'intro'}

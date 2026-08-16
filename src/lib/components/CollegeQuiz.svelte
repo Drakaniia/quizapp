@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { backOut, cubicOut } from 'svelte/easing';
 	import { fade, fly, slide } from 'svelte/transition';
+	import { resolve } from '$app/paths';
 	import type { Question, QuizColors } from '$lib/collegeQuizTypes';
 	import MolecularViewer from '$lib/components/MolecularViewer.svelte';
 
@@ -172,6 +173,12 @@
 	</div>
 
 	<div class="quiz-shell">
+		<nav class="breadcrumb" aria-label="Breadcrumb">
+			<a href={resolve('/')}>Home</a>
+			<span class="breadcrumb-sep" aria-hidden="true">/</span>
+			<span class="breadcrumb-current">{title} {accentTitle}</span>
+		</nav>
+
 		<header class="intro-header" class:hidden={currentStep !== 'intro'}>
 			<div>
 				<p class="eyebrow">{eyebrow}</p>
@@ -364,6 +371,36 @@
 	button:disabled {
 		cursor: not-allowed;
 		opacity: 0.35;
+	}
+
+	.breadcrumb {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-bottom: 1.5rem;
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 0.66rem;
+		font-weight: 700;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+	}
+
+	.breadcrumb a {
+		color: var(--muted);
+		text-decoration: none;
+		transition: color 0.15s ease;
+	}
+
+	.breadcrumb a:hover {
+		color: var(--primary);
+	}
+
+	.breadcrumb-sep {
+		color: #ffffff30;
+	}
+
+	.breadcrumb-current {
+		color: var(--primary);
 	}
 
 	.background-field {
